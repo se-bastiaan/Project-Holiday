@@ -11,6 +11,8 @@ public class WeatherPeriod {
 
     private ArrayList<WeatherDay> weatherData;
 
+    public PredictionType highestPredictionType;
+
     public int totalDaysRainChanceBetween25And50;   // >= 25 && < 50
     public int totalDaysRainChanceBetween50And75;   // >= 50 && < 75
     public int totalDaysRainChanceOver75;           // > 75
@@ -42,12 +44,13 @@ public class WeatherPeriod {
         totalDaysTemperatureUnder0 = 0;
         totalDaysTemperatureBetween0And10 = 0;
         totalDaysTemperatureBetween10And20 = 0;
+        highestPredictionType = PredictionType.NODATA;
     }
 
     public void calculateTotalDays() {
         resetTotalDays();
         for (WeatherDay day : weatherData) {
-            // Todo: Do the checks here.
+            // Todo: Do the checks here
         }
     }
 
