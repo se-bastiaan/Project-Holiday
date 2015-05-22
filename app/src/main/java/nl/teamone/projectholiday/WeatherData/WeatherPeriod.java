@@ -6,21 +6,29 @@ import java.util.Date;
 
 public class WeatherPeriod {
 
+    private static final int TEMPERATURELOW =   0;
+    private static final int TEMPERATUREMID =   10;
+    private static final int TEMPERATUREHIGH =  20;
+
+    private static final int RAINCHANCELOW =    25;
+    private static final int RAINCHANCEMID =    50;
+    private static final int RAINCHANCEHIGH =   75;
+
     public final Date startDay;
     public final Date endDay;
 
     private ArrayList<WeatherDay> weatherData;
 
-    public PredictionType highestPredictionType;
+    public PredictionType bestPredictionType;
 
-    public int totalDaysRainChanceBetween25And50;   // >= 25 && < 50
-    public int totalDaysRainChanceBetween50And75;   // >= 50 && < 75
-    public int totalDaysRainChanceOver75;           // > 75
+    public int totalDaysRainChanceLow;          // >= LOW && < MID
+    public int totalDaysRainChanceMid;          // >= MID && < HIGH
+    public int totalDaysRainChanceHigh;         // > HIGH
 
     // Uses the temperatureFeelsLike attribute
-    public int totalDaysTemperatureUnder0;          // < 0
-    public int totalDaysTemperatureBetween0And10;   // >= 0 && < 10
-    public int totalDaysTemperatureBetween10And20;  // >= 10 && < 20
+    public int totalDaysTemperatureLow;         // < LOW
+    public int totalDaysTemperatureMid;         // >= LOW && < MID
+    public int totalDaysTemperatureHigh;        // >= MID && < HIGH
 
     public WeatherPeriod(Date _start, Date _end) {
         this.startDay = _start;
@@ -29,22 +37,18 @@ public class WeatherPeriod {
         resetTotalDays();
     }
 
+    private void resetTotalDays() {
+        totalDaysRainChanceLow  = totalDaysRainChanceMid  = totalDaysRainChanceHigh  =
+        totalDaysTemperatureLow = totalDaysTemperatureMid = totalDaysTemperatureHigh = 0;
+        bestPredictionType = PredictionType.NODATA;
+    }
+
     public ArrayList<WeatherDay> getWeatherData() {
         return weatherData;
     }
 
     public void addWeatherDay(WeatherDay _day) {
         this.weatherData.add(_day);
-    }
-
-    private void resetTotalDays() {
-        totalDaysRainChanceBetween25And50 = 0;
-        totalDaysRainChanceBetween50And75 = 0;
-        totalDaysRainChanceOver75 = 0;
-        totalDaysTemperatureUnder0 = 0;
-        totalDaysTemperatureBetween0And10 = 0;
-        totalDaysTemperatureBetween10And20 = 0;
-        highestPredictionType = PredictionType.NODATA;
     }
 
     public void calculateTotalDays() {
