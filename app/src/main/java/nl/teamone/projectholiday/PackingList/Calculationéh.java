@@ -78,8 +78,9 @@ public class Calculationéh {
         }
     }
 
-
-
+    protected DayType getDay(){
+        return mDayType;
+    }
 }
 
 
