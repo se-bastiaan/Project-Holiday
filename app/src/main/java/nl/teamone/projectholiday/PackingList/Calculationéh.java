@@ -10,6 +10,7 @@ public class Calculationéh {
     private SunType mSunType;
 
 
+
     public Calculationéh(){
         /*give the day a new value
         calculateSun();
