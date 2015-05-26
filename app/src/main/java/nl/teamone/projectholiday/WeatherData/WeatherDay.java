@@ -10,8 +10,7 @@ public class WeatherDay {
 
     // Temperature is given in Celsius, rounded down to the closest integer.
     public int temperatureHigh;
-    public int temperatureMeanMidday;
-    public int temperatureMeanNight;
+    public int temperatureMean;
     public int temperatureLow;
     public int temperatureFeelsLike;
 

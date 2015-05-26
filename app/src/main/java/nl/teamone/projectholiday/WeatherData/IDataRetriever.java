@@ -6,5 +6,7 @@ public interface IDataRetriever {
 
     WeatherPeriod getWeatherData(Location loc, Date from, Date to);
     WeatherDay getCurrentWeather(Location loc);
+    PredictionType getBestPredictionType(Date from, Date to);
+    Boolean canMakeConnectionWithApi();
 
 }
