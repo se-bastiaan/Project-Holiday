@@ -9,16 +9,26 @@ public class Calculationéh {
     private RainType mRainType;
     private SunType mSunType;
 
+    /**
+     * Calculates all the types depending on the params
+     * @param rainPerc
+     * @param rainMM
+     * @param dayDeg
+     * @param nightDeg
+     */
+    public Calculationéh(int rainPerc, int rainMM, int dayDeg, int nightDeg){
+        calculateSun(dayDeg);
+        calculateNight(nightDeg);
+        calculateRain(rainPerc, rainMM);
+        calculateDay(mSunType, mRainType);
 
-    public Calculationéh(){
-        /*give the day a new value
-        calculateSun();
-        calculateNight();
-        calculateRain();
-        then calculate the DayType with the new values
-        calculateDay();
-        */
     }
+
+    /**
+     * Calculates rain type, sets mRainType
+     * @param percentage
+     * @param mm
+     */
     private void calculateRain(int percentage, int mm){
         //calculation to set RainType
         if(mm==0||percentage <30){
@@ -29,6 +39,11 @@ public class Calculationéh {
             this.mRainType = RainType.mRain3; //chance of mossoon
         }
     }
+
+    /**
+     * Calculates sun type, sets mSunType
+     * @param degrees
+     */
     private void calculateSun(int degrees){
         //calculation to set SunType
         if(degrees < 20) {
@@ -39,6 +54,11 @@ public class Calculationéh {
             this.mSunType = SunType.mSun3; //chance of drought
         }
     }
+
+    /**
+     * Calculates night type, mNightType
+     * @param degrees
+     */
     private void calculateNight(int degrees){
         //calculation to set NightType
         if(5<=degrees) {
@@ -49,6 +69,12 @@ public class Calculationéh {
             this.mNightType = NightType.mNight3; //GET RID OF THE SHEEETS
         }
     }
+
+    /**
+     * Calculates day type depending on sun type and rain type, then sets mDayType
+     * @param ST
+     * @param RT
+     */
     private void calculateDay(SunType ST, RainType RT){
         //calculation to set DayType
         if(ST==SunType.mSun1){ //no chance of sun
@@ -78,8 +104,20 @@ public class Calculationéh {
         }
     }
 
+    /**
+     * Getter for mDayType
+     * @return mDayType
+     */
     protected DayType getDay(){
         return mDayType;
+    }
+
+    /**
+     * Getter for mNightType
+     * @return mNightType
+     */
+    protected NightType getNight(){
+        return mNightType;
     }
 }
 
