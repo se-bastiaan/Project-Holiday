@@ -1,5 +1,7 @@
 package nl.teamone.projectholiday.PackingList;
 
+import nl.teamone.projectholiday.WeatherData.WeatherDay;
+
 /**
  * Created by IAmHeavenly on 26-5-2015.
  */
@@ -11,15 +13,12 @@ public class Calculationéh {
 
     /**
      * Calculates all the types depending on the params
-     * @param rainPerc
-     * @param rainMM
-     * @param dayDeg
-     * @param nightDeg
+     * @param day
      */
-    public Calculationéh(int rainPerc, int rainMM, int dayDeg, int nightDeg){
-        calculateSun(dayDeg);
-        calculateNight(nightDeg);
-        calculateRain(rainPerc, rainMM);
+    public Calculationéh(WeatherDay day){
+        calculateSun(day.getTempFeel());
+        calculateNight(day.getTempMean());
+        calculateRain(day.getRainPerc(), day.getRainMM());
         calculateDay(mSunType, mRainType);
 
     }
