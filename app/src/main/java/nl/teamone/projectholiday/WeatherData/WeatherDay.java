@@ -22,7 +22,7 @@ public class WeatherDay {
 
     // Rain (Or snow, depending on temperature) is given in millimeters per day.
     // Chance is 0-100%
-    public int mRainAmountInMillimeter;
+    public int mRainAmountinMillimeter;
     public int mRainPercentChance;
 
     public WeatherDay(Date _day,
@@ -36,7 +36,7 @@ public class WeatherDay {
         return mRainPercentChance;
     }
     public int getRainMM(){
-        return mRainAmountInMillimeter;
+        return mRainAmountinMillimeter;
     }
     public int getTempHigh(){
         return mTemperatureHigh;
@@ -44,12 +44,8 @@ public class WeatherDay {
     public int getTempMean(){
         return mTemperatureMean;
     }
-    public int getTempLow(){
-        return mTemperatureLow;
-    }
-    public int getTempFeel(){
-        return mTemperatureFeelsLike;
-    }
+    public int getTempLow() {return mTemperatureLow; }
+    public int getTempFeel(){ return mTemperatureFeelsLike; }
 
 
 

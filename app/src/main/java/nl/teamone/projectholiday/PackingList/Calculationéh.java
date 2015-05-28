@@ -107,7 +107,7 @@ public class Calculationéh {
      * Getter for mDayType
      * @return mDayType
      */
-    protected DayType getDay(){
+    public DayType getDay(){
         return mDayType;
     }
 
@@ -115,9 +115,7 @@ public class Calculationéh {
      * Getter for mNightType
      * @return mNightType
      */
-    protected NightType getNight(){
-        return mNightType;
-    }
+    public NightType getNight(){return mNightType; }
 }
 
 

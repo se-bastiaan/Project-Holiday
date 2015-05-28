@@ -9,12 +9,14 @@ import nl.teamone.projectholiday.WeatherData.WeatherDay;
  */
 public class Day {
     private Calculationéh calcs;
+    public WeatherDay wDay;
     /**
      * constructor, which immediately sets day type
-     * @param date
+     * @param wDay
      */
-    public Day(Date date, WeatherDay wDay){
-        calcs = new Calculationéh(wDay);
+    public Day(WeatherDay wDay){
+        this.calcs = new Calculationéh(wDay);
+        this.wDay = wDay;
     }
 
     /**
