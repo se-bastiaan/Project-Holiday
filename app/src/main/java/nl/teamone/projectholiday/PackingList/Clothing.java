@@ -10,4 +10,14 @@ public class Clothing {
         this.id_name = name;
         this.quantity = quantity;
     }
+    @Override
+    public String toString(){
+        String str = "";
+        if(quantity>1) {
+            str = id_name + ": " + quantity + " times.\n";
+        } else if(quantity == 1){
+            str =  id_name + ": " + quantity + " time.\n";
+        }
+        return str;
+    }
 }

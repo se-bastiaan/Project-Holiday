@@ -202,6 +202,8 @@ public class PackingList {
         if(getDay7()+getDay6() > 0){addSwimmin();}
         addCoats();
         addShoes();
+        addUmbrella();
+        addHeadWear();
     }
 
     /**
@@ -277,7 +279,7 @@ public class PackingList {
     }
 
     /**
-     * Adds boots/sandals/normal shoes
+     * Adds boots/sandals/normal shoes/slippers
      */
     private void addShoes(){
         int otherChoiceSelected = 0;
@@ -290,8 +292,57 @@ public class PackingList {
             otherChoiceSelected = 1;
         }
         this.ClothingList.add(new Clothing("Pair of shoes", (2-otherChoiceSelected) ));
+        this.ClothingList.add(new Clothing("Slippers", 1));
     }
 
+    /**
+     * Adds umbrella
+     */
+    private void addUmbrella(){
+        if(getDay1()+getDay2()>0){
+            this.ClothingList.add(new Clothing("Umbrella", 1));
+        }
+    }
+
+    /**
+     * Adds a pet and/or a hood
+     */
+    private void addHeadWear(){
+        if(getDay6()+getDay7()>0){
+            this.ClothingList.add(new Clothing("Pet", 1));
+        }
+        if(getDay1()+getDay2()>0){
+            this.ClothingList.add(new Clothing("Hood", 1));
+        }
+    }
+
+    //Done adding the clothing
+
+
+    /**
+     * Getter for clothing list
+     * @return ClothingList
+     */
+    public ArrayList<Clothing> getClothingList(){
+        return this.ClothingList;
+    }
+
+    /**
+     * Getter for this packingList
+     * @return this
+     */
+    public PackingList getPackingList(){
+        return this;
+    }
+
+    @Override
+    public String toString(){
+        String str="";
+        for(Clothing cloth : ClothingList){
+            str += cloth;
+        }
+        return str;
+    }
 
 
 
