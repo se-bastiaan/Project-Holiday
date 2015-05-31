@@ -21,6 +21,7 @@ public class WeatherPeriod {
 
     public PredictionType bestPredictionType;
 
+    public int totalDaysRainChanceNone;         // < LOW
     public int totalDaysRainChanceLow;          // >= LOW && < MID
     public int totalDaysRainChanceMid;          // >= MID && < HIGH
     public int totalDaysRainChanceHigh;         // > HIGH
@@ -29,6 +30,7 @@ public class WeatherPeriod {
     public int totalDaysTemperatureLow;         // < LOW
     public int totalDaysTemperatureMid;         // >= LOW && < MID
     public int totalDaysTemperatureHigh;        // >= MID && < HIGH
+    public int totalDaysTemperatureTop;         // > HIGH
 
     public WeatherPeriod(Date _start, Date _end) {
         this.startDay = _start;
@@ -38,8 +40,8 @@ public class WeatherPeriod {
     }
 
     private void resetTotalDays() {
-        totalDaysRainChanceLow  = totalDaysRainChanceMid  = totalDaysRainChanceHigh  =
-        totalDaysTemperatureLow = totalDaysTemperatureMid = totalDaysTemperatureHigh = 0;
+        totalDaysRainChanceNone = totalDaysRainChanceLow  = totalDaysRainChanceMid   = totalDaysRainChanceHigh =
+        totalDaysTemperatureLow = totalDaysTemperatureMid = totalDaysTemperatureHigh = totalDaysTemperatureTop = 0;
         bestPredictionType = PredictionType.NODATA;
     }
 
@@ -54,7 +56,40 @@ public class WeatherPeriod {
     public void calculateTotalDays() {
         resetTotalDays();
         for (WeatherDay day : weatherData) {
-            // Todo: Do the checks here
+
+            // Update total rain days.
+            if (day.mRainPercentChance >= RAINCHANCELOW) {
+                if (day.mRainPercentChance >= RAINCHANCEMID) {
+                    if (day.mRainPercentChance >= RAINCHANCEHIGH) {
+                        totalDaysRainChanceHigh++;
+                    } else {
+                        totalDaysRainChanceMid++;
+                    }
+                } else {
+                    totalDaysRainChanceLow++;
+                }
+            } else {
+                totalDaysRainChanceNone++;
+            }
+
+            // Update total temperature days.
+            if (day.mTemperatureFeelsLike < TEMPERATUREHIGH) {
+                if (day.mTemperatureFeelsLike < TEMPERATUREMID) {
+                    if (day.mTemperatureFeelsLike < TEMPERATURELOW) {
+                        totalDaysTemperatureLow++;
+                    } else {
+                        totalDaysTemperatureMid++;
+                    }
+                } else {
+                    totalDaysTemperatureHigh++;
+                }
+            } else {
+                totalDaysTemperatureTop++;
+            }
+
+            if (bestPredictionType.ordinal() > day.predictionType.ordinal()) {
+                bestPredictionType = day.predictionType;
+            }
         }
     }
 
