@@ -3,6 +3,7 @@ package nl.teamone.projectholiday.WeatherData;
 import java.util.Date;
 
 public class ApiOpenWeatherMap implements IDataRetriever {
+
     private static final String apiKey = "dce718f5c13cf6686383c372a35bdf7b";
 
     @Override
