@@ -32,6 +32,23 @@ public class WeatherPeriod {
     public int totalDaysTemperatureHigh;        // >= MID && < HIGH
     public int totalDaysTemperatureTop;         // > HIGH
 
+    /**
+     * Combines two weatherperiods into a new weatherperiod.
+     * Does not do any checking to see whether the periods match up.
+     * For proper usage, the first day of the second weatherperiod should be
+     * one day past the last day of the first weatherperiod.
+     * @param first The first weatherperiod.
+     * @param second The second weatherperiod.
+     * @return a new instance of a weatherperiod containing both.
+     */
+    public static WeatherPeriod appendPeriod(WeatherPeriod first, WeatherPeriod second) {
+        WeatherPeriod response = new WeatherPeriod(first.startDay, second.endDay);
+        response.weatherData = first.weatherData;
+        response.weatherData.addAll(second.weatherData);
+        response.calculateTotalDays();
+        return response;
+    }
+
     public WeatherPeriod(Date _start, Date _end) {
         this.startDay = _start;
         this.endDay = _end;
