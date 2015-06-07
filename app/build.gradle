@@ -1,13 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.ofg.uptodate'
 
-repositories {
-    jcenter()
-    maven {
-        url "https://jitpack.io"
-    }
-}
-
 android {
     compileSdkVersion 22
     buildToolsVersion "21.1.2"
@@ -41,5 +34,4 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp-urlconnection:2.4.0'
     compile 'io.reactivex:rxandroid:0.24.0'
     compile 'com.jakewharton:butterknife:6.1.0'
-    compile 'com.github.vijayrawatsan:android-json-form-wizard:1.0'
 }

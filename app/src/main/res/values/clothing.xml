@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="pants">
+        <item quantity="one">pants</item>
+        <item quantity="other">pants</item>
+    </plurals>
+    <plurals name="shorts">
+        <item quantity="one">short</item>
+        <item quantity="other">shorts</item>
+    </plurals>
+    <plurals name="short_sleeve_shirts">
+        <item quantity="one">short sleeve shirt</item>
+        <item quantity="other">short sleeve shirts</item>
+    </plurals>
+    <plurals name="long_sleeve_shirts">
+        <item quantity="one">long sleeve shirt</item>
+        <item quantity="other">long sleeve shirts</item>
+    </plurals>
+    <plurals name="dresses">
+        <item quantity="one">dress</item>
+        <item quantity="other">dresses</item>
+    </plurals>
+    <plurals name="sweaters">
+        <item quantity="one">sweater</item>
+        <item quantity="other">sweaters</item>
+    </plurals>
+    <plurals name="socks">
+        <item quantity="one">pair of socks</item>
+        <item quantity="other">pairs of socks</item>
+    </plurals>
+    <plurals name="underwear">
+        <item quantity="one">piece of underwear</item>
+        <item quantity="other">pieces of underwear</item>
+    </plurals>
+    <plurals name="thin_pyjamas">
+        <item quantity="other">thin pyjamas</item>
+    </plurals>
+    <plurals name="thick_pyjamas">
+        <item quantity="other">thick pyjamas</item>
+    </plurals>
+    <plurals name="swimwear">
+        <item quantity="one">set of swim clothing</item>
+        <item quantity="other">sets of swim clothing</item>
+    </plurals>
+    <plurals name="rain_coat">
+        <item quantity="one">rain coat</item>
+        <item quantity="other">rain coats</item>
+    </plurals>
+    <plurals name="summer_coat">
+        <item quantity="one">summer coat</item>
+        <item quantity="other">summer coats</item>
+    </plurals>
+    <plurals name="winter_coat">
+        <item quantity="one">winter coat</item>
+        <item quantity="other">winter coats</item>
+    </plurals>
+    <plurals name="rubber_boots">
+        <item quantity="one">pair of rubber boots</item>
+        <item quantity="other">pairs of rubber boots</item>
+    </plurals>
+    <plurals name="shoes">
+        <item quantity="one">pair of shoes</item>
+        <item quantity="other">pairs of shoes</item>
+    </plurals>
+    <plurals name="slippers">
+        <item quantity="one">pair of slippers</item>
+        <item quantity="other">pairs of slippers</item>
+    </plurals>
+    <plurals name="sandals">
+        <item quantity="one">pair of sandals</item>
+        <item quantity="other">pairs of sandals</item>
+    </plurals>
+    <plurals name="umbrella">
+        <item quantity="one">umbrella</item>
+        <item quantity="other">umbrellas</item>
+    </plurals>
+    <plurals name="pet">
+        <item quantity="one">pet</item>
+        <item quantity="other">pets</item>
+    </plurals>
+    <plurals name="hood">
+        <item quantity="one">hood</item>
+        <item quantity="other">hoods</item>
+    </plurals>
+</resources>
