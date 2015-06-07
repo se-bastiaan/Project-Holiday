@@ -1,6 +1,6 @@
 package nl.teamone.projectholiday.algorithm;
 
-import nl.teamone.projectholiday.api.WeatherDay;
+import nl.teamone.projectholiday.api.objects.WeatherDay;
 
 public class Day {
     private Calculation mCalculation;

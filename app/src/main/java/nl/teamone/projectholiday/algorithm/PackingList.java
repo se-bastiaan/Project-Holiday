@@ -3,8 +3,8 @@ package nl.teamone.projectholiday.algorithm;
 
 import java.util.ArrayList;
 
-import nl.teamone.projectholiday.api.WeatherDay;
-import nl.teamone.projectholiday.api.WeatherPeriod;
+import nl.teamone.projectholiday.api.objects.WeatherDay;
+import nl.teamone.projectholiday.api.objects.WeatherPeriod;
 
 public class PackingList {
     private ArrayList<Day> mHoliday;
