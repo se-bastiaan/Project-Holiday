@@ -1,4 +1,4 @@
-package nl.teamone.projectholiday.WeatherData;
+package nl.teamone.projectholiday.api;
 
 public class Location {
 
@@ -12,7 +12,7 @@ public class Location {
     public final double latitude;
     public final double longitude;
 
-    public Location(String _loc) {
+    public Location(String loc) {
         //TODO: Find real location from location string.
         this.fullDisplayName = "";
         this.countryFull = "";

@@ -1,4 +1,4 @@
-package nl.teamone.projectholiday.WeatherData.ResponseOpenWeatherMap;
+package nl.teamone.projectholiday.api.responses.openweathermap;
 
 import retrofit.http.GET;
 import retrofit.http.Headers;

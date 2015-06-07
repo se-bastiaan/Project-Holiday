@@ -1,8 +1,5 @@
-package nl.teamone.projectholiday.PackingList;
+package nl.teamone.projectholiday.algorithm;
 
-/**
- * Created by Gebruiker on 28-5-2015.
- */
 public class Clothing {
     private String id_name;
     private int quantity;

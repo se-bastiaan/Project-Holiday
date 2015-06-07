@@ -1,7 +1,9 @@
-package nl.teamone.projectholiday.WeatherData;
+package nl.teamone.projectholiday.api;
 
 import java.util.Date;
-import nl.teamone.projectholiday.WeatherData.ResponseOpenWeatherMap.*;
+
+import nl.teamone.projectholiday.api.responses.openweathermap.IOpenWeatherMap;
+import nl.teamone.projectholiday.api.responses.openweathermap.Response;
 import retrofit.RestAdapter;
 
 public class ApiOpenWeatherMap implements IDataRetriever {
@@ -43,12 +45,12 @@ public class ApiOpenWeatherMap implements IDataRetriever {
         return null;
     }
 
-    private String getQueryLocation( Location location) {
+    private String getQueryLocation(Location location) {
         return location.city.toLowerCase() + "," + location.countryISO.toLowerCase();
     }
 
     private Integer getDuration(Date from, Date to) {
-        return 1 + ((int)((from.getTime() - to.getTime())/ DAY_IN_MILLIS));
+        return 1 + ((int) ((from.getTime() - to.getTime()) / DAY_IN_MILLIS));
     }
 
     private WeatherPeriod processResponse(Response response) {
