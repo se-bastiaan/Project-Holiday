@@ -1,4 +1,4 @@
-package nl.teamone.projectholiday.api;
+package nl.teamone.projectholiday.api.objects;
 
 public enum PredictionType {
     NODATA,         // No Data available.

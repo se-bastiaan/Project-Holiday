@@ -1,4 +1,4 @@
-package nl.teamone.projectholiday.api;
+package nl.teamone.projectholiday.api.objects;
 
 
 import java.util.ArrayList;
