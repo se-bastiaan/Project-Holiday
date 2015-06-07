@@ -27,6 +27,8 @@ public class WeatherDay {
         mPredictionType = predictionType;
     }
 
+    public PredictionType getPredictionType() { return mPredictionType;}
+
     public int getRainPerc() {
         return mRainPercentChance;
     }

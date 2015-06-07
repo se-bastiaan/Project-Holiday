@@ -101,8 +101,8 @@ public class WeatherPeriod {
                 totalDaysTemperatureTop++;
             }
 
-            if (bestPredictionType.ordinal() > day.predictionType.ordinal()) {
-                bestPredictionType = day.predictionType;
+            if (bestPredictionType.ordinal() > day.getPredictionType().ordinal()) {
+                bestPredictionType = day.getPredictionType();
             }
         }
     }
