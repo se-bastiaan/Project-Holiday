@@ -13,7 +13,7 @@ public interface OpenWeatherMapService {
     @GET("/data/2.5/forecast/daily")
     @Headers("x-api-key: " + API_KEY)
     Observable<Response> getWeatherForeCast(@Query("q") String query,
-                                @Query("cnt") String dayCount,
-                                @Query("mode") String mode);
+                                            @Query("cnt") String dayCount,
+                                            @Query("mode") String mode);
 
 }

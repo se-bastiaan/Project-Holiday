@@ -7,7 +7,6 @@ import nl.teamone.projectholiday.api.objects.PredictionType;
 import nl.teamone.projectholiday.api.objects.WeatherDay;
 import nl.teamone.projectholiday.api.objects.WeatherPeriod;
 import rx.Observable;
-import rx.Subscription;
 import rx.functions.Action1;
 
 public abstract class DataRetriever {

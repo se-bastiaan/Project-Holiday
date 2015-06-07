@@ -28,6 +28,7 @@ public class PackingList {
 
     /**
      * counts the number of days with given the day type
+     *
      * @param type {@link DayType}
      * @return numberOfDays
      */
@@ -43,6 +44,7 @@ public class PackingList {
 
     /**
      * Counter for number of nights with the given type
+     *
      * @param type {@link NightType}
      * @return nrOfDays
      */
@@ -94,8 +96,8 @@ public class PackingList {
     private void addAllClothing() {
         addPants();
         addTShirts();
-        
-        if(mGender == Gender.FEMALE)
+
+        if (mGender == Gender.FEMALE)
             addDresses();
 
         addSweaters();

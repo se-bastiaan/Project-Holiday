@@ -6,9 +6,7 @@ import nl.teamone.projectholiday.api.objects.Location;
 import nl.teamone.projectholiday.api.objects.PredictionType;
 import nl.teamone.projectholiday.api.objects.WeatherDay;
 import nl.teamone.projectholiday.api.objects.WeatherPeriod;
-import nl.teamone.projectholiday.api.responses.openweathermap.Response;
-import nl.teamone.projectholiday.api.services.OpenWeatherMapService;
-import retrofit.RestAdapter;
+import rx.Observable;
 import rx.Subscription;
 import rx.functions.Action1;
 
@@ -17,8 +15,8 @@ import rx.functions.Action1;
  */
 public class API extends DataRetriever {
 
-    public static Subscription getWeatherData(Location loc, Date from, Date to, Action1<WeatherPeriod> subscriber) {
-        return OpenWeatherMapApi.getWeatherData(loc, from, to, subscriber);
+    public static Observable<WeatherPeriod> getWeatherData(Location loc, Date from, Date to) {
+        return OpenWeatherMapApi.getWeatherData(loc, from, to);
     }
 
     public static WeatherDay getCurrentWeather(Location loc) {

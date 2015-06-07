@@ -1,6 +1,5 @@
 package nl.teamone.projectholiday.api.objects;
 
-import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
 
@@ -26,12 +25,12 @@ public class Location {
     public final double longitude;
 
     private Location(Address address) {
-        this.fullDisplayName = String.format("%s, %s", address.getLocality(), address.getCountryName());
-        this.countryFull = address.getCountryName();
-        this.countryISO = address.getCountryCode();
-        this.city = address.getLocality();
-        this.latitude = address.getLatitude();
-        this.longitude = address.getLongitude();
+        fullDisplayName = String.format("%s, %s", address.getLocality(), address.getCountryName());
+        countryFull = address.getCountryName();
+        countryISO = address.getCountryCode();
+        city = address.getLocality();
+        latitude = address.getLatitude();
+        longitude = address.getLongitude();
     }
 
     public static Observable<List<Location>> find(String location) {
@@ -42,7 +41,7 @@ public class Location {
                         Geocoder geocoder = new Geocoder(HolidayApplication.getInstance());
                         try {
                             List<Location> returnList = new ArrayList<>();
-                            for(Address address :  geocoder.getFromLocationName(s, 20)) {
+                            for (Address address : geocoder.getFromLocationName(s, 20)) {
                                 returnList.add(new Location(address));
                             }
                             return returnList;
