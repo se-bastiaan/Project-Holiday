@@ -7,8 +7,6 @@ import nl.teamone.projectholiday.api.objects.PredictionType;
 import nl.teamone.projectholiday.api.objects.WeatherDay;
 import nl.teamone.projectholiday.api.objects.WeatherPeriod;
 import rx.Observable;
-import rx.Subscription;
-import rx.functions.Action1;
 
 /**
  * Class that determines which API will be used and forwards the request to the appropriate one
@@ -25,10 +23,6 @@ public class API extends DataRetriever {
 
     public static PredictionType getBestPredictionType(Date from, Date to) {
         return OpenWeatherMapApi.getBestPredictionType(from, to);
-    }
-
-    public static Boolean canMakeConnectionWithApi() {
-        return OpenWeatherMapApi.canMakeConnectionWithApi();
     }
 
 }

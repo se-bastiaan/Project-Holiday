@@ -7,20 +7,22 @@ import nl.teamone.projectholiday.api.objects.PredictionType;
 import nl.teamone.projectholiday.api.objects.WeatherDay;
 import nl.teamone.projectholiday.api.objects.WeatherPeriod;
 import rx.Observable;
-import rx.functions.Action1;
 
-public abstract class DataRetriever {
+public class StubApi extends DataRetriever {
 
-    public static Observable<WeatherPeriod> getWeatherData(Location loc, Date from, Date to, Action1<WeatherPeriod> subscriber) {
-        throw new NoSuchMethodError();
+    public static Observable<WeatherPeriod> getWeatherData(Location loc, Date from, Date to) {
+        WeatherPeriod weatherPeriod = new WeatherPeriod(from, to);
+        weatherPeriod.bestPredictionType = getBestPredictionType(from, to);
+        // TODO: Add more stub data
+        return Observable.just(weatherPeriod);
     }
 
     public static WeatherDay getCurrentWeather(Location loc) {
-        throw new NoSuchMethodError();
+        return null;
     }
 
     public static PredictionType getBestPredictionType(Date from, Date to) {
-        throw new NoSuchMethodError();
+        return PredictionType.CLIMATE;
     }
 
 }

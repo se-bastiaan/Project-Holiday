@@ -45,10 +45,6 @@ public class OpenWeatherMapApi extends DataRetriever {
         return null;
     }
 
-    public static Boolean canMakeConnectionWithApi() {
-        return null;
-    }
-
     private static String getQueryLocation(Location location) {
         return location.city.toLowerCase() + "," + location.countryISO.toLowerCase();
     }
