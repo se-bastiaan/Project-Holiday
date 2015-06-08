@@ -1,5 +1,6 @@
 package nl.teamone.projectholiday.api;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import nl.teamone.projectholiday.api.objects.Location;
@@ -44,7 +45,10 @@ public class OpenWeatherMapApi extends DataRetriever {
     }
 
     public static PredictionType getBestPredictionType(Date from, Date to) {
-        return null;
+        Date now = new Date();
+        if ((to.getTime() - (15* DAY_IN_MILLIS)) > now.getTime())
+            return PredictionType.NODATA;
+        return PredictionType.FORECAST;
     }
 
     private static String getQueryLocation(Location location) {
@@ -64,7 +68,7 @@ public class OpenWeatherMapApi extends DataRetriever {
         }
 
         // We got a valid response, let's populate the data:
-        for (int i = 0; i < response.cnt; i++) {
+        for (int i = 0; i < response.cnt && i < response.list.size(); i++) {
             Date dailyDate = new Date(from.getTime() + (i * DAY_IN_MILLIS));
             WeatherDay day = new WeatherDay(dailyDate, loc, PredictionType.FORECAST);
 
