@@ -12,8 +12,6 @@ import nl.teamone.projectholiday.utils.PrefUtils;
  */
 public class MainActivity extends BaseActivity {
 
-
-
     /**
      * Android Lifecycle onCreate
      * @param savedInstanceState {@link Bundle}

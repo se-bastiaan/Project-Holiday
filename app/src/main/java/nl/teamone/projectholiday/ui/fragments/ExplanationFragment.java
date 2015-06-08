@@ -32,10 +32,23 @@ public class ExplanationFragment extends Fragment {
     @InjectView(R.id.slide_text)
     TextView mText;
 
+    /**
+     * Create {@link ExplanationFragment} instance without done button
+     * @param imageRes {@link Integer} Image resource
+     * @param textRes {@link Integer} Text resource
+     * @return {@link ExplanationFragment}
+     */
     public static ExplanationFragment getInstance(int imageRes, int textRes) {
         return getInstance(imageRes, textRes, -1);
     }
 
+    /**
+     * Create {@link ExplanationFragment} instance with done button
+     * @param imageRes {@link Integer} Image resource
+     * @param textRes {@link Integer} Text resource
+     * @param doneRes {@link Integer} Done button text resource
+     * @return {@link ExplanationFragment}
+     */
     public static ExplanationFragment getInstance(int imageRes, int textRes, int doneRes) {
         ExplanationFragment fragment = new ExplanationFragment();
         Bundle args = new Bundle();
@@ -47,6 +60,10 @@ public class ExplanationFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * Fragment lifecycle onCreate
+     * @param savedInstanceState {@link Bundle}
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,27 +71,45 @@ public class ExplanationFragment extends Fragment {
         mTextRes = getArguments().getInt(TEXT);
         if(getArguments().containsKey(DONE))
             mDoneRes = getArguments().getInt(DONE);
-
     }
 
+    /**
+     * Fragment lifecycle onActivityCreated
+     * @param savedInstanceState {@link Bundle}
+     */
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mActivity = (ExplanationActivity) getActivity();
     }
 
+    /**
+     * Fragment lifecycle onDetach
+     */
     @Override
     public void onDetach() {
         super.onDetach();
         mActivity = null;
     }
 
+    /**
+     * Fragment lifecycle onCreateView
+     * @param inflater {@link LayoutInflater}
+     * @param container {@link ViewGroup}
+     * @param savedInstanceState {@link Bundle}
+     * @return {@link View}
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_explanation, container, false);
     }
 
+    /**
+     * Fragment lifecycle onViewCreated
+     * @param view {@link View}
+     * @param savedInstanceState {@link Bundle}
+     */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -88,18 +123,10 @@ public class ExplanationFragment extends Fragment {
         }
     }
 
-    @OnClick(R.id.next_button)
-    public void nextPage(View v) {
-        if(mActivity != null)
-            mActivity.nextPage(v);
-    }
-
-    @OnClick(R.id.prev_button)
-    public void previousPage(View v) {
-        if(mActivity != null)
-            mActivity.previousPage(v);
-    }
-
+    /**
+     * OnClick listener for the optional done button in the fragment
+     * @param v {@link View}
+     */
     @Optional
     @OnClick(R.id.done)
     public void doneClick(View v) {

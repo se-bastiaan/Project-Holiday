@@ -20,4 +20,38 @@
         app:fadeLength="1000"
         app:selectedColor="@color/accent" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="340dp"
+        android:layout_centerInParent="true">
+
+    <ImageButton
+        android:id="@+id/prev_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="@dimen/explanation_side_distance"
+        android:layout_marginStart="@dimen/explanation_side_distance"
+        android:layout_marginTop="95dp"
+        android:background="@drawable/selectable_background"
+        android:contentDescription="@string/prev"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_nav_prev" />
+    <ImageButton
+        android:id="@+id/next_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="@dimen/explanation_side_distance"
+        android:layout_marginEnd="@dimen/explanation_side_distance"
+        android:layout_marginTop="95dp"
+        android:background="@drawable/selectable_background"
+        android:contentDescription="@string/next"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_nav_next" />
+
+    </RelativeLayout>
+
 </RelativeLayout>
