@@ -2,6 +2,8 @@ package nl.teamone.projectholiday;
 
 import android.app.Application;
 
+import timber.log.Timber;
+
 public class HolidayApplication extends Application {
 
     private static HolidayApplication sThis;
@@ -14,6 +16,10 @@ public class HolidayApplication extends Application {
     public void onCreate() {
         super.onCreate();
         sThis = this;
+
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
+        }
     }
 
 }
