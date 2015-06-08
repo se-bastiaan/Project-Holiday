@@ -7,8 +7,6 @@ public class WeatherDay {
     private final Date mDay;
     private final Location mLocation;
     private final PredictionType mPredictionType;
-    private Date mTimeSunrise;
-    private Date mTimeSunset;
     // Temperature is given in Celsius, rounded down to the closest integer.
     private int mTemperatureHigh;
     private int mTemperatureMean;
@@ -25,6 +23,34 @@ public class WeatherDay {
         mDay = day;
         mLocation = location;
         mPredictionType = predictionType;
+    }
+
+    public void setmTemperatureHigh(int mTemperatureHigh) {
+        this.mTemperatureHigh = mTemperatureHigh;
+    }
+
+    public void setmTemperatureMean(int mTemperatureMean) {
+        this.mTemperatureMean = mTemperatureMean;
+    }
+
+    public void setmTemperatureLow(int mTemperatureLow) {
+        this.mTemperatureLow = mTemperatureLow;
+    }
+
+    public void setmTemperatureFeelsLike(int mTemperatureFeelsLike) {
+        this.mTemperatureFeelsLike = mTemperatureFeelsLike;
+    }
+
+    public void setmWindSpeed(int mWindSpeed) {
+        this.mWindSpeed = mWindSpeed;
+    }
+
+    public void setmRainAmountinMillimeter(int mRainAmountinMillimeter) {
+        this.mRainAmountinMillimeter = mRainAmountinMillimeter;
+    }
+
+    public void setmRainPercentChance(int mRainPercentChance) {
+        this.mRainPercentChance = mRainPercentChance;
     }
 
     public PredictionType getPredictionType() {

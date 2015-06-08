@@ -1,6 +1,6 @@
 package nl.teamone.projectholiday.api.responses.openweathermap;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Response {
 
@@ -8,6 +8,6 @@ public class Response {
     public double message;
     public City city;
     public int cnt;
-    public List<Daily> list;
+    public ArrayList<Daily> list;
 
 }

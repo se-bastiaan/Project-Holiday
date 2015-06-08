@@ -32,7 +32,9 @@ public class OpenWeatherMapApi extends DataRetriever {
                 .map(new Func1<Response, WeatherPeriod>() {
                     @Override
                     public WeatherPeriod call(Response response) {
-                        return processResponse(response);
+                        // TODO: FIX THIS
+                        // return processResponse(response, from, to, loc);
+                        return null;
                     }
                 });
     }
@@ -53,7 +55,32 @@ public class OpenWeatherMapApi extends DataRetriever {
         return 1 + ((int) ((from.getTime() - to.getTime()) / DAY_IN_MILLIS));
     }
 
-    private static WeatherPeriod processResponse(Response response) {
-        return null;
+    private static WeatherPeriod processResponse(Response response, Date from, Date to, Location loc) {
+        WeatherPeriod period = new WeatherPeriod(from, to);
+        if (response.cod != 200) {
+            // Did not return with HTML status code 200 (OK)
+            // Return the period immediately. period.bestPredictionType will be equal to NODATA
+            return period;
+        }
+
+        // We got a valid response, let's populate the data:
+        for (int i = 0; i < response.cnt; i++) {
+            Date dailyDate = new Date(from.getTime() + (i * DAY_IN_MILLIS));
+            WeatherDay day = new WeatherDay(dailyDate, loc, PredictionType.FORECAST);
+
+            // Set the data to match the day.
+            day.setmRainAmountinMillimeter((int) response.list.get(i).rain._3h);
+            day.setmRainPercentChance(0); //TODO: Figure this shit out.
+            day.setmTemperatureHigh((int)response.list.get(i).temp.max);
+            day.setmTemperatureLow((int)response.list.get(i).temp.min);
+            day.setmTemperatureMean((int)response.list.get(i).temp.day);
+            day.setmTemperatureFeelsLike(0); //TODO: Also figure this shit out.
+            day.setmWindSpeed((int)response.list.get(i).wind.speed);
+
+            period.addWeatherDay(day);
+        }
+
+        period.calculateTotalDays();
+        return period;
     }
 }
