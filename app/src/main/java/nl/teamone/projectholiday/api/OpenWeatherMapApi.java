@@ -48,7 +48,7 @@ public class OpenWeatherMapApi extends DataRetriever {
         return location.city.toLowerCase() + "," + location.countryISO.toLowerCase();
     }
 
-    private static WeatherPeriod processResponse(Response response, Date from, Date to, Location loc) {
+    private static WeatherPeriod processResponse(Response response, Date from, Date to, Location location) {
         WeatherPeriod period = new WeatherPeriod(from, to);
         if (response.cod != 200) {
             // Did not return with HTML status code 200 (OK)
@@ -59,15 +59,17 @@ public class OpenWeatherMapApi extends DataRetriever {
         // We got a valid response, let's populate the data:
         for (int i = 0; i < response.cnt && i < response.list.size(); i++) {
             Date dailyDate = new Date(from.getTime() + (i * DAY_IN_MILLIS));
-            WeatherDay day = new WeatherDay(dailyDate, loc, PredictionType.FORECAST);
+            WeatherDay day = new WeatherDay(dailyDate, location, PredictionType.FORECAST);
 
             // Set the data to match the day.
             day.setRainAmountInMillimeter((int) response.list.get(i).rain._3h);
-            day.setRainPercentChance(0); //TODO: Figure this shit out.
+            if (response.list.get(i).weather.description.equalsIgnoreCase("Rain"))
+                day.setRainPercentChance(100);
+            else
+                day.setRainPercentChance(0);
             day.setTemperatureHigh((int) response.list.get(i).temp.max);
             day.setTemperatureLow((int) response.list.get(i).temp.min);
             day.setTemperatureMean((int) response.list.get(i).temp.day);
-            day.setTemperatureFeelsLike(0); //TODO: Also figure this shit out.
             day.setWindSpeed((int) response.list.get(i).wind.speed);
 
             period.addWeatherDay(day);

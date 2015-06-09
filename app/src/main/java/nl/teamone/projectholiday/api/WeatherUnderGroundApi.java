@@ -5,6 +5,7 @@ import java.util.Date;
 
 import nl.teamone.projectholiday.api.objects.Location;
 import nl.teamone.projectholiday.api.objects.PredictionType;
+import nl.teamone.projectholiday.api.objects.WeatherDay;
 import nl.teamone.projectholiday.api.objects.WeatherPeriod;
 import nl.teamone.projectholiday.api.responses.weatherunderground.ApiResponse;
 import nl.teamone.projectholiday.api.services.WeatherUnderGroundService;
@@ -58,9 +59,21 @@ public class WeatherUnderGroundApi extends DataRetriever {
         }
 
         // Got a valid response, let's populate the data:
-        Date currentlyCalculatingDate = new Date();
-        currentlyCalculatingDate.setTime(from.getTime());
         int totalDays = getDuration(from, to);
+        for (int i = 0; i < totalDays; i++) {
+            Date dailyDate = new Date(from.getTime() + (i * DAY_IN_MILLIS));
+            WeatherDay day = new WeatherDay(dailyDate, location, PredictionType.CLIMATE);
+
+            // Set the data to match the day.
+            day.setRainAmountInMillimeter((int)response.trip.precip.avg.cm);
+            day.setRainPercentChance(response.trip.chance_of.chanceofrainday.percentage);
+            day.setTemperatureHigh(response.trip.temp_high.avg.C);
+            day.setTemperatureLow(response.trip.temp_low.avg.C);
+            day.setTemperatureMean((response.trip.temp_high.avg.C + response.trip.temp_low.avg.C) / 2);
+            day.setWindSpeed(response.trip.chance_of.chanceofwindyday.percentage / 3);
+
+            period.addWeatherDay(day);
+        }
 
         period.calculateTotalDays();
         return period;

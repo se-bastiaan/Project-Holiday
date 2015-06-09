@@ -21,7 +21,7 @@ public class WeatherPeriod {
     public int totalDaysRainChanceLow;          // >= LOW && < MID
     public int totalDaysRainChanceMid;          // >= MID && < HIGH
     public int totalDaysRainChanceHigh;         // > HIGH
-    // Uses the temperatureFeelsLike attribute
+    // Uses the temperatureMean attribute
     public int totalDaysTemperatureLow;         // < LOW
     public int totalDaysTemperatureMid;         // >= LOW && < MID
     public int totalDaysTemperatureHigh;        // >= MID && < HIGH
@@ -87,9 +87,9 @@ public class WeatherPeriod {
             }
 
             // Update total temperature days.
-            if (day.getTemperatureFeel() < TEMPERATUREHIGH) {
-                if (day.getTemperatureFeel() < TEMPERATUREMID) {
-                    if (day.getTemperatureFeel() < TEMPERATURELOW) {
+            if (day.getTemperatureMean() < TEMPERATUREHIGH) {
+                if (day.getTemperatureMean() < TEMPERATUREMID) {
+                    if (day.getTemperatureMean() < TEMPERATURELOW) {
                         totalDaysTemperatureLow++;
                     } else {
                         totalDaysTemperatureMid++;

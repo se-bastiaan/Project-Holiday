@@ -14,8 +14,8 @@ public class Calculation {
      * @param day
      */
     public Calculation(WeatherDay day) {
-        calculateSun(day.getTemperatureFeel());
-        calculateNight(day.getTemperatureMean());
+        calculateSun(day.getTemperatureHigh());
+        calculateNight(day.getTemperatureLow());
         calculateRain(day.getRainPercentChance(), day.getRainAmountInMillimeter());
         calculateDay(mSunType, mRainType);
 

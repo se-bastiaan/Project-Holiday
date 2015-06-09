@@ -4,7 +4,6 @@ import java.util.Date;
 
 import nl.teamone.projectholiday.api.objects.Location;
 import nl.teamone.projectholiday.api.objects.PredictionType;
-import nl.teamone.projectholiday.api.objects.WeatherDay;
 import nl.teamone.projectholiday.api.objects.WeatherPeriod;
 import rx.Observable;
 import rx.functions.Action1;

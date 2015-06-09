@@ -11,7 +11,6 @@ public class WeatherDay {
     private int mTemperatureHigh;
     private int mTemperatureMean;
     private int mTemperatureLow;
-    private int mTemperatureFeelsLike;
     // Wind speed is given in KM/H
     private int mWindSpeed;
     // Rain (Or snow, depending on temperature) is given in millimeters per mDay.
@@ -35,10 +34,6 @@ public class WeatherDay {
 
     public void setTemperatureLow(int temperatureLow) {
         mTemperatureLow = temperatureLow;
-    }
-
-    public void setTemperatureFeelsLike(int temperatureFeelsLike) {
-        mTemperatureFeelsLike = temperatureFeelsLike;
     }
 
     public void setWindSpeed(int windSpeed) {
@@ -75,10 +70,6 @@ public class WeatherDay {
 
     public int getTemperatureLow() {
         return mTemperatureLow;
-    }
-
-    public int getTemperatureFeel() {
-        return mTemperatureFeelsLike;
     }
 
     public int getWindSpeed() {
