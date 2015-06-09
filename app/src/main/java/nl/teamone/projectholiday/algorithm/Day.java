@@ -7,8 +7,7 @@ public class Day {
     private WeatherDay mWeatherDay;
 
     /**
-     * constructor, which immediately sets day type
-     *
+     * Constructor, which immediately sets day type
      * @param wDay
      */
     public Day(WeatherDay wDay) {
@@ -17,8 +16,7 @@ public class Day {
     }
 
     /**
-     * getter for the day type
-     *
+     * Getter for the day type
      * @return {@link DayType}
      */
     public DayType getDay() {
@@ -26,8 +24,7 @@ public class Day {
     }
 
     /**
-     * getter for the night type
-     *
+     * Getter for the night type
      * @return {@link NightType}
      */
     public NightType getNight() {
@@ -35,8 +32,7 @@ public class Day {
     }
 
     /**
-     * gett for the weather day
-     *
+     * Getter for the weather day
      * @return mWeatherDay
      */
     public WeatherDay getWeatherDay() {

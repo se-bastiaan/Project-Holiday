@@ -12,8 +12,7 @@ public class PackingList {
     private ArrayList<Clothing> mClothingList;
 
     /**
-     * constructor which makes an array list with days
-     *
+     * Constructor which makes an array list with days
      * @param period
      */
     public PackingList(WeatherPeriod period, Gender gender) {
@@ -27,8 +26,7 @@ public class PackingList {
     }
 
     /**
-     * counts the number of days with given the day type
-     *
+     * Counts the number of days with the given day type
      * @param type {@link DayType}
      * @return numberOfDays
      */
@@ -44,7 +42,6 @@ public class PackingList {
 
     /**
      * Counter for number of nights with the given type
-     *
      * @param type {@link NightType}
      * @return nrOfDays
      */
@@ -60,7 +57,6 @@ public class PackingList {
 
     /**
      * Getter for total number of days
-     *
      * @return nrOfDays
      */
     private int getTotalDays() {
@@ -75,14 +71,13 @@ public class PackingList {
 
     /**
      * Checks for lowest temperature during the entire holiday
-     *
      * @return lowestTemp
      */
     private int lowestTemp() {
         int lowestTemp = 100;
         for (Day day : mHoliday) {
             if (day.getWeatherDay().getTemperatureLow() < 100) {
-                lowestTemp = day.getWeatherDay().getTemperatureFeel();
+                lowestTemp = day.getWeatherDay().getTemperatureLow();
             }
         }
         return lowestTemp;
@@ -98,7 +93,7 @@ public class PackingList {
         addTShirts();
 
         if (mGender == Gender.FEMALE)
-            addDresses();
+            addDresses(); //Unless you are transgender, but we assume the user isn't
 
         addSweaters();
         addUnderStuff();
@@ -223,7 +218,6 @@ public class PackingList {
 
     /**
      * Getter for clothing list
-     *
      * @return mClothingList
      */
     public ArrayList<Clothing> getClothingList() {

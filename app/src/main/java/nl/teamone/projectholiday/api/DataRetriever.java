@@ -12,14 +12,34 @@ public abstract class DataRetriever {
 
     public static final long DAY_IN_MILLIS = 1000 * 60 * 60 * 24;
 
+    /**
+     *
+     * @param loc
+     * @param from
+     * @param to
+     * @param subscriber
+     * @return
+     */
     public static Observable<WeatherPeriod> getWeatherData(Location loc, Date from, Date to, Action1<WeatherPeriod> subscriber) {
         throw new NoSuchMethodError();
     }
 
+    /**
+     *
+     * @param from
+     * @param to
+     * @return
+     */
     public static PredictionType getBestPredictionType(Date from, Date to) {
         throw new NoSuchMethodError();
     }
 
+    /**
+     * Calculates total number of days of vacation
+     * @param from
+     * @param to
+     * @return total days
+     */
     public static Integer getDuration(Date from, Date to) {
         return 1 + ((int) ((from.getTime() - to.getTime()) / DAY_IN_MILLIS));
     }

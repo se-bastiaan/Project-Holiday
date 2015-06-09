@@ -24,6 +24,11 @@ public class Location {
     public final double latitude;
     public final double longitude;
 
+    /**
+     * Constructor for Location.
+     * Sets values to values of address
+     * @param address
+     */
     private Location(Address address) {
         fullDisplayName = String.format("%s, %s", address.getLocality(), address.getCountryName());
         countryFull = address.getCountryName();
@@ -33,6 +38,11 @@ public class Location {
         longitude = address.getLongitude();
     }
 
+    /**
+     * Converts a string to a location
+     * @param location
+     * @return location
+     */
     public static Observable<List<Location>> find(String location) {
         return Observable.just(location).subscribeOn(Schedulers.newThread())
                 .map(new Func1<String, List<Location>>() {

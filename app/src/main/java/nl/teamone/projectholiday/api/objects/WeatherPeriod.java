@@ -28,6 +28,13 @@ public class WeatherPeriod {
     public int totalDaysTemperatureTop;         // > HIGH
     private ArrayList<WeatherDay> weatherData;
 
+    /**
+     * Constructor for WeatherPeriod.
+     * Sets values to params, then makes weatherData a new ArrayList
+     * and sets all daycounters to 0.
+     * @param start
+     * @param end
+     */
     public WeatherPeriod(Date start, Date end) {
         startDay = start;
         endDay = end;
@@ -36,14 +43,14 @@ public class WeatherPeriod {
     }
 
     /**
-     * Combines two weatherperiods into a new weatherperiod.
+     * Combines two WeatherPeriods into a new WeatherPeriod.
      * Does not do any checking to see whether the periods match up.
-     * For proper usage, the first day of the second weatherperiod should be
-     * one day past the last day of the first weatherperiod.
+     * For proper usage, the first day of the second WeatherPeriod should be
+     * one day past the last day of the first WeatherPeriod.
      *
-     * @param first  The first weatherperiod.
-     * @param second The second weatherperiod.
-     * @return a new instance of a weatherperiod containing both.
+     * @param first  The first WeatherPeriod.
+     * @param second The second WeatherPeriod.
+     * @return a new instance of a WeatherPeriod containing both.
      */
     public static WeatherPeriod appendPeriod(WeatherPeriod first, WeatherPeriod second) {
         WeatherPeriod response = new WeatherPeriod(first.startDay, second.endDay);
@@ -53,20 +60,34 @@ public class WeatherPeriod {
         return response;
     }
 
+    /**
+     * Sets all daycounters to 0 and the predictionType to NODATA
+     */
     private void resetTotalDays() {
         totalDaysRainChanceNone = totalDaysRainChanceLow = totalDaysRainChanceMid = totalDaysRainChanceHigh =
                 totalDaysTemperatureLow = totalDaysTemperatureMid = totalDaysTemperatureHigh = totalDaysTemperatureTop = 0;
         bestPredictionType = PredictionType.NODATA;
     }
 
+    /**
+     * Getter for weatherData
+     * @return weatherData
+     */
     public ArrayList<WeatherDay> getWeatherData() {
         return weatherData;
     }
 
+    /**
+     * Adds WeatherDay to weatherData
+     * @param day
+     */
     public void addWeatherDay(WeatherDay day) {
         this.weatherData.add(day);
     }
 
+    /**
+     * First sets all daycounters to 0, then calculates them again
+     */
     public void calculateTotalDays() {
         resetTotalDays();
         for (WeatherDay day : weatherData) {
