@@ -5,6 +5,6 @@ public class WeatherBlock {
     public int id;
     public String main;
     public String description;
-    public String icon;
+    public String icon; //http://openweathermap.org/img/w/{STRING}.png
 
 }
