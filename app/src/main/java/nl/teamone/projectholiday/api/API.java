@@ -4,10 +4,9 @@ import java.util.Date;
 
 import nl.teamone.projectholiday.api.objects.Location;
 import nl.teamone.projectholiday.api.objects.PredictionType;
-import nl.teamone.projectholiday.api.objects.WeatherDay;
 import nl.teamone.projectholiday.api.objects.WeatherPeriod;
+import nl.teamone.projectholiday.api.responses.openweathermap.Response;
 import rx.Observable;
-import rx.functions.Action1;
 import rx.functions.Func2;
 
 /**
@@ -51,7 +50,7 @@ public class API extends DataRetriever {
 
     }
 
-    public static Observable<WeatherDay> getCurrentWeather (Location loc) {
+    public static Observable<Response> getCurrentWeather (Location loc) {
         return OpenWeatherMapApi.getCurrentWeather(loc);
     }
 

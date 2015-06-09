@@ -6,6 +6,7 @@ import nl.teamone.projectholiday.api.objects.Location;
 import nl.teamone.projectholiday.api.objects.PredictionType;
 import nl.teamone.projectholiday.api.objects.WeatherDay;
 import nl.teamone.projectholiday.api.objects.WeatherPeriod;
+import nl.teamone.projectholiday.api.responses.openweathermap.Response;
 import rx.Observable;
 import rx.functions.Action1;
 
@@ -35,7 +36,7 @@ public abstract class DataRetriever {
         throw new NoSuchMethodError();
     }
 
-    public static Observable<WeatherDay> getCurrentWeather(Location loc, Action1<WeatherDay> subscriber) {
+    public static Observable<Response> getCurrentWeather(Location loc, Action1<WeatherDay> subscriber) {
         throw new NoSuchMethodError();
     }
 

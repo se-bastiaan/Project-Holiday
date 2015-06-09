@@ -18,7 +18,7 @@ public class OpenWeatherMapApi extends DataRetriever {
     public static final String requiredMode = "json";
     public static final String baseURL = "http://api.openweathermap.org";
 
-    public static Observable<WeatherDay> getCurrentWeather(final Location loc) {
+    public static Observable<Response> getCurrentWeather(final Location loc) {
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint(baseURL)
                 .build();
@@ -28,13 +28,7 @@ public class OpenWeatherMapApi extends DataRetriever {
         return apiRetriever.getCurrentWeather(
                 Double.toString(loc.latitude),
                 Double.toString(loc.longitude),
-                requiredMode)
-                .map(new Func1<Response, WeatherDay>() {
-                    @Override
-                    public WeatherDay call(Response response) {
-                        return processDay(new Date(), loc, response.list.get(0));
-                    }
-                });
+                requiredMode);
     }
 
     /**
