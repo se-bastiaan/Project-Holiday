@@ -6,6 +6,7 @@ import nl.teamone.projectholiday.api.objects.Location;
 import nl.teamone.projectholiday.api.objects.PredictionType;
 import nl.teamone.projectholiday.api.objects.WeatherDay;
 import nl.teamone.projectholiday.api.objects.WeatherPeriod;
+import nl.teamone.projectholiday.api.responses.openweathermap.Daily;
 import nl.teamone.projectholiday.api.responses.openweathermap.Response;
 import nl.teamone.projectholiday.api.services.OpenWeatherMapService;
 import retrofit.RestAdapter;
@@ -16,6 +17,19 @@ public class OpenWeatherMapApi extends DataRetriever {
 
     public static final String requiredMode = "json";
     public static final String baseURL = "http://api.openweathermap.org";
+
+    public static Observable<Response> getCurrentWeather(final Location loc) {
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setEndpoint(baseURL)
+                .build();
+
+        OpenWeatherMapService apiRetriever = restAdapter.create(OpenWeatherMapService.class);
+
+        return apiRetriever.getCurrentWeather(
+                Double.toString(loc.latitude),
+                Double.toString(loc.longitude),
+                requiredMode);
+    }
 
     /**
      * Gets WeatherData from location from date from to date to
@@ -88,18 +102,8 @@ public class OpenWeatherMapApi extends DataRetriever {
         // We got a valid response, let's populate the data:
         for (int i = 0; i < response.cnt && i < response.list.size(); i++) {
             Date dailyDate = new Date(from.getTime() + (i * DAY_IN_MILLIS));
-            WeatherDay day = new WeatherDay(dailyDate, location, PredictionType.FORECAST);
 
-            // Set the data to match the day.
-            day.setRainAmountInMillimeter((int) response.list.get(i).rain._3h);
-            if (response.list.get(i).weather.description.equalsIgnoreCase("Rain"))
-                day.setRainPercentChance(100);
-            else
-                day.setRainPercentChance(0);
-            day.setTemperatureHigh((int) response.list.get(i).temp.max);
-            day.setTemperatureLow((int) response.list.get(i).temp.min);
-            day.setTemperatureMean((int) response.list.get(i).temp.day);
-            day.setWindSpeed((int) response.list.get(i).wind.speed);
+            WeatherDay day = processDay(dailyDate, location, response.list.get(i));
 
             period.addWeatherDay(day);
         }
@@ -107,4 +111,26 @@ public class OpenWeatherMapApi extends DataRetriever {
         period.calculateTotalDays();
         return period;
     }
+
+    private static WeatherDay processDay(Date date, Location loc, Daily dayInfo) {
+        WeatherDay day = new WeatherDay(date, loc, PredictionType.FORECAST);
+
+        // Set the data to match the day.
+        day.setRainAmountInMillimeter((int) dayInfo.rain._3h);
+        if (dayInfo.weather.description.equalsIgnoreCase("Rain"))
+            day.setRainPercentChance(100);
+        else if (dayInfo.weather.description.equalsIgnoreCase("Drizzle"))
+            day.setRainPercentChance(60);
+        else if (dayInfo.weather.description.equalsIgnoreCase("Thunderstorm"))
+            day.setRainPercentChance(100);
+        else
+            day.setRainPercentChance(0);
+        day.setTemperatureHigh((int) dayInfo.temp.max);
+        day.setTemperatureLow((int) dayInfo.temp.min);
+        day.setTemperatureMean((int) dayInfo.temp.day);
+        day.setWindSpeed((int) dayInfo.wind.speed);
+
+        return day;
+    }
+
 }

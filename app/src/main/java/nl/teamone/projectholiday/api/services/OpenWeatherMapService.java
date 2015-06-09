@@ -23,4 +23,10 @@ public interface OpenWeatherMapService {
                                                          @Query("cnt") String dayCount,
                                                          @Query("mode") String mode);
 
+    @GET("/data/2.5/weather")
+    @Headers("x-api-key: " + API_KEY)
+    Observable<Response> getCurrentWeather(@Query("lat") String latitude,
+                                           @Query("lon") String longitude,
+                                           @Query("mode") String mode);
+
 }
