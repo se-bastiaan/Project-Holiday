@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Project Holiday</string>
 
+    <!-- Licensing Information -->
+    <string name="api_license_owa">Forecast weather data is collected using the OpenWeatherMap API; http://www.openweathermap.org/.</string>
+    <string name="api_license_wu">Climate data is collected using the WeatherUnderground API; http://www.wunderground.com/</string>
+
     <!-- Explanation Fragment -->
     <string name="next">Next</string>
     <string name="prev">Previous</string>
