@@ -6,15 +6,14 @@
     <string name="api_license_wu">Climate data is collected using the WeatherUnderground API; http://www.wunderground.com/</string>
 
     <!-- Explanation Fragment -->
-    <string name="welcome">Welcome to %s</string>
     <string name="next">Next</string>
     <string name="prev">Previous</string>
     <string name="proceed">Proceed</string>
 
-    <string name="explanation1">Explanation1</string>
-    <string name="explanation2">Explanation2</string>
-    <string name="explanation3">Explanation3</string>
-    <string name="explanation4">Explanation4, click proceed to continue.</string>
+    <string name="explanation1">Welkom! Met deze app kan je een paklijst laten samen stellen afgestemd op jouw vakantie.</string>
+    <string name="explanation2">Je moet straks eerst invullen wanneer, waar en hoe lang je op vakantie gaat. Als je vervolgens op plan drukt krijg je een paklijst.</string>
+    <string name="explanation3">Mochten er grote verandering komen in het weer van jouw bestemming dan krijg je een melding over de veranderingen in de paklijst.</string>
+    <string name="explanation4">Klik op "Verder" om de gegevens over je vakantie in te vullen.</string>
 
     <!-- PlanActivity -->
     <string name="where_going_to">Where are you going to?</string>
@@ -27,12 +26,6 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="plan">Plan</string>
-    <string name="date_notpossible">The selected date is invalid</string>
-    <string name="location_notfound">The entered location could not be found.</string>
-    <string name="no_date">No date selected</string>
-
-    <!-- NoPlanFragment -->
-    <string name="no_plan">You don\'t have a planned trip.\nPress the button below to plan a new trip.</string>
-    <string name="plan_new_trip">Plan new trip</string>
+    <string name="date_notpossible">The selected date is not available</string>
 
 </resources>
