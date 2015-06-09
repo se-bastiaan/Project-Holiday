@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.ImageButton;
 
 import com.viewpagerindicator.UnderlinePageIndicator;
 
@@ -26,6 +27,10 @@ public class ExplanationActivity extends BaseActivity {
     ViewPager mViewPager;
     @InjectView(R.id.indicator)
     UnderlinePageIndicator mIndicator;
+    @InjectView(R.id.next_button)
+    ImageButton mNextButton;
+    @InjectView(R.id.prev_button)
+    ImageButton mPrevButton;
 
     /**
      * Activity lifecycle onCreate
@@ -40,14 +45,17 @@ public class ExplanationActivity extends BaseActivity {
          * Then set it on {@link ViewPager} and set the {@link ViewPager} on the {@link UnderlinePageIndicator}
          */
         Fragment[] fragments = new Fragment[]{
-                ExplanationFragment.getInstance(R.drawable.tempimage, R.string.app_name),
-                ExplanationFragment.getInstance(R.drawable.tempimage, R.string.app_name),
-                ExplanationFragment.getInstance(R.drawable.tempimage, R.string.app_name),
-                ExplanationFragment.getInstance(R.drawable.tempimage, R.string.app_name, R.string.proceed)
+                ExplanationFragment.getInstance(R.drawable.tempimage, R.string.explanation1),
+                ExplanationFragment.getInstance(R.drawable.tempimage, R.string.explanation2),
+                ExplanationFragment.getInstance(R.drawable.tempimage, R.string.explanation3),
+                ExplanationFragment.getInstance(R.drawable.tempimage, R.string.explanation4, R.string.proceed)
         };
         PagerAdapter adapter = new ExplanationFragmentAdapter(getSupportFragmentManager(), fragments);
         mViewPager.setAdapter(adapter);
         mIndicator.setViewPager(mViewPager);
+
+        mViewPager.addOnPageChangeListener(mOnPageChangeListener);
+        mPrevButton.setVisibility(View.GONE);
     }
 
     /**
@@ -79,5 +87,28 @@ public class ExplanationActivity extends BaseActivity {
         startActivity(i);
         finish();
     }
+
+    private ViewPager.OnPageChangeListener mOnPageChangeListener = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+
+        @Override
+        public void onPageSelected(int position) {
+            if(position == 0) {
+                mPrevButton.setVisibility(View.GONE);
+            } else {
+                mPrevButton.setVisibility(View.VISIBLE);
+            }
+
+            if(position == mViewPager.getAdapter().getCount() - 1) {
+                mNextButton.setVisibility(View.GONE);
+            } else {
+                mNextButton.setVisibility(View.VISIBLE);
+            }
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {}
+    };
 
 }

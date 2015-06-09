@@ -28,8 +28,13 @@ public class MainActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_main);
 
-        if(!PrefUtils.contains(this, Preferences.EXPLANATION_GIVEN)) {
+        if(!PrefUtils.get(this, Preferences.EXPLANATION_GIVEN, false)) {
             Intent intent = new Intent(this, ExplanationActivity.class);
+            startActivity(intent);
+            finish();
+            return;
+        } else if (!PrefUtils.get(this, Preferences.HAS_PLAN, false)) {
+            Intent intent = new Intent(this, PlanActivity.class);
             startActivity(intent);
             finish();
             return;
