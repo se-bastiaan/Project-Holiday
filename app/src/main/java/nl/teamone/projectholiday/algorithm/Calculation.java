@@ -9,8 +9,7 @@ public class Calculation {
     private SunType mSunType;
 
     /**
-     * Calculates all the types depending on the params
-     *
+     * Calculates all the types depending on the WeatherDay
      * @param day
      */
     public Calculation(WeatherDay day) {

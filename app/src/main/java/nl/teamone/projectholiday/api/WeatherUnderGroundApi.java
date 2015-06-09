@@ -17,7 +17,13 @@ public class WeatherUnderGroundApi extends DataRetriever {
 
     public static final String baseURL = "http://api.wunderground.com";
 
-
+    /**
+     * Gets WeatherData from location from date from to date to
+     * @param loc
+     * @param from
+     * @param to
+     * @return WeatherData
+     */
     public static Observable<WeatherPeriod> getWeatherData(final Location loc, final Date from, final Date to) {
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint(baseURL)
@@ -38,6 +44,11 @@ public class WeatherUnderGroundApi extends DataRetriever {
                 });
     }
 
+    /**
+     * Converts date to string
+     * @param date
+     * @return month + day
+     */
     public static String createDateString(Date date) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
@@ -46,10 +57,26 @@ public class WeatherUnderGroundApi extends DataRetriever {
         return formattedMonth + formattedDay;
     }
 
+    /**
+     *
+     * @param from
+     * @param to
+     * @return PredictionType.CLIMATE
+     */
     public static PredictionType getBestPredictionType(Date from, Date to) {
         return PredictionType.CLIMATE;
     }
 
+    /**
+     * If response is not OK, returns empty weatherPeriod. Otherwise,
+     * adds a WeatherDay for every day of the vacation toe a WeatherPeriod and
+     * returns that new WeatherPeriod
+     * @param response
+     * @param from
+     * @param to
+     * @param location
+     * @return period
+     */
     private static WeatherPeriod processResponse(ApiResponse response, Date from, Date to, Location location) {
         WeatherPeriod period = new WeatherPeriod(from, to);
         if (response.response.error != null) {

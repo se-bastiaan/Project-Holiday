@@ -17,6 +17,13 @@ public class OpenWeatherMapApi extends DataRetriever {
     public static final String requiredMode = "json";
     public static final String baseURL = "http://api.openweathermap.org";
 
+    /**
+     * Gets WeatherData from location from date from to date to
+     * @param loc
+     * @param from
+     * @param to
+     * @return WeatherData
+     */
     public static Observable<WeatherPeriod> getWeatherData(final Location loc, final Date from, final Date to) {
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint(baseURL)
@@ -37,6 +44,13 @@ public class OpenWeatherMapApi extends DataRetriever {
                 });
     }
 
+    /**
+     * If date is within 16 days, prediction type is accurate,
+     * else prediction type is shit.
+     * @param from
+     * @param to
+     * @return FORECAST / NODATA
+     */
     public static PredictionType getBestPredictionType(Date from, Date to) {
         Date now = new Date();
         if ((to.getTime() - (15* DAY_IN_MILLIS)) > now.getTime())
@@ -44,10 +58,25 @@ public class OpenWeatherMapApi extends DataRetriever {
         return PredictionType.FORECAST;
     }
 
+    /**
+     * Converts location to string
+     * @param location
+     * @return location.city = location.countryISO
+     */
     private static String getQueryLocation(Location location) {
         return location.city.toLowerCase() + "," + location.countryISO.toLowerCase();
     }
 
+    /**
+     * If response is not OK, returns empty weatherPeriod. Otherwise,
+     * adds a WeatherDay for every day of the vacation toe a WeatherPeriod and
+     * returns that new WeatherPeriod
+     * @param response
+     * @param from
+     * @param to
+     * @param location
+     * @return period
+     */
     private static WeatherPeriod processResponse(Response response, Date from, Date to, Location location) {
         WeatherPeriod period = new WeatherPeriod(from, to);
         if (response.cod != 200) {
