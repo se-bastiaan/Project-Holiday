@@ -11,11 +11,9 @@ import rx.functions.Action1;
 
 public abstract class DataRetriever {
 
-    public static Observable<WeatherPeriod> getWeatherData(Location loc, Date from, Date to, Action1<WeatherPeriod> subscriber) {
-        throw new NoSuchMethodError();
-    }
+    public static final long DAY_IN_MILLIS = 1000 * 60 * 60 * 24;
 
-    public static WeatherDay getCurrentWeather(Location loc) {
+    public static Observable<WeatherPeriod> getWeatherData(Location loc, Date from, Date to, Action1<WeatherPeriod> subscriber) {
         throw new NoSuchMethodError();
     }
 

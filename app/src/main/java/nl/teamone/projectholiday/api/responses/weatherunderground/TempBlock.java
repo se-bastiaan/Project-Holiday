@@ -1,7 +1,8 @@
 package nl.teamone.projectholiday.api.responses.weatherunderground;
 
-public class Response {
+public class TempBlock {
 
-    public Error error;
+    public int C;
+    public int F;
 
 }

@@ -17,31 +17,25 @@ public class OpenWeatherMapApi extends DataRetriever {
 
     public static final String requiredMode = "json";
     public static final String baseURL = "http://api.openweathermap.org";
-    public static final long DAY_IN_MILLIS = 1000 * 60 * 60 * 24;
 
-    public static Observable<WeatherPeriod> getWeatherData(Location loc, Date from, Date to) {
+    public static Observable<WeatherPeriod> getWeatherData(final Location loc, final Date from, final Date to) {
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint(baseURL)
                 .build();
 
         OpenWeatherMapService apiRetriever = restAdapter.create(OpenWeatherMapService.class);
 
-        return apiRetriever.getWeatherForeCast(
-                getQueryLocation(loc),
+        return apiRetriever.getWeatherForecastByCoordinates(
+                Double.toString(loc.latitude),
+                Double.toString(loc.longitude),
                 Integer.toString(getDuration(from, to)),
                 requiredMode)
                 .map(new Func1<Response, WeatherPeriod>() {
                     @Override
                     public WeatherPeriod call(Response response) {
-                        // TODO: FIX THIS
-                        // return processResponse(response, from, to, loc);
-                        return null;
+                        return processResponse(response, from, to, loc);
                     }
                 });
-    }
-
-    public static WeatherDay getCurrentWeather(Location loc) {
-        return null;
     }
 
     public static PredictionType getBestPredictionType(Date from, Date to) {

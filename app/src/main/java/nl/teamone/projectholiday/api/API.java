@@ -17,10 +17,6 @@ public class API extends DataRetriever {
         return OpenWeatherMapApi.getWeatherData(loc, from, to);
     }
 
-    public static WeatherDay getCurrentWeather(Location loc) {
-        return OpenWeatherMapApi.getCurrentWeather(loc);
-    }
-
     public static PredictionType getBestPredictionType(Date from, Date to) {
         return OpenWeatherMapApi.getBestPredictionType(from, to);
     }

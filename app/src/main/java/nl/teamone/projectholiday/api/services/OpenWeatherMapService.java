@@ -16,4 +16,11 @@ public interface OpenWeatherMapService {
                                             @Query("cnt") String dayCount,
                                             @Query("mode") String mode);
 
+    @GET("/data/2.5/forecast/daily")
+    @Headers("x-api-key: " + API_KEY)
+    Observable<Response> getWeatherForecastByCoordinates(@Query("lat") String latitude,
+                                                         @Query("lon") String longitude,
+                                                         @Query("cnt") String dayCount,
+                                                         @Query("mode") String mode);
+
 }
