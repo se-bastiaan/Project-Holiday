@@ -50,7 +50,20 @@ public class WeatherUnderGroundApi extends DataRetriever {
     }
 
     private static WeatherPeriod processResponse(ApiResponse response, Date from, Date to, Location location) {
-        return null;
+        WeatherPeriod period = new WeatherPeriod(from, to);
+        if (response.response.error != null) {
+            // Got an error.
+            // Return the period immediately. period.bestPredictionType will be equal to NODATA
+            return period;
+        }
+
+        // Got a valid response, let's populate the data:
+        Date currentlyCalculatingDate = new Date();
+        currentlyCalculatingDate.setTime(from.getTime());
+        int totalDays = getDuration(from, to);
+
+        period.calculateTotalDays();
+        return period;
     }
 
 }

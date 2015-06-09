@@ -21,4 +21,8 @@ public abstract class DataRetriever {
         throw new NoSuchMethodError();
     }
 
+    public static Integer getDuration(Date from, Date to) {
+        return 1 + ((int) ((from.getTime() - to.getTime()) / DAY_IN_MILLIS));
+    }
+
 }

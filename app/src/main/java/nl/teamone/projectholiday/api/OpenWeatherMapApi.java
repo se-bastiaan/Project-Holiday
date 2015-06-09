@@ -48,10 +48,6 @@ public class OpenWeatherMapApi extends DataRetriever {
         return location.city.toLowerCase() + "," + location.countryISO.toLowerCase();
     }
 
-    private static Integer getDuration(Date from, Date to) {
-        return 1 + ((int) ((from.getTime() - to.getTime()) / DAY_IN_MILLIS));
-    }
-
     private static WeatherPeriod processResponse(Response response, Date from, Date to, Location loc) {
         WeatherPeriod period = new WeatherPeriod(from, to);
         if (response.cod != 200) {
