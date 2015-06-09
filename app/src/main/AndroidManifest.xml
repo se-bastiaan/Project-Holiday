@@ -13,7 +13,9 @@
         android:name=".HolidayApplication">
 
         <activity android:name=".ui.activities.ExplanationActivity" />
-        <activity android:name=".ui.activities.PlanActivity" />
+        <activity
+            android:name=".ui.activities.PlanActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity android:name=".ui.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -6,6 +6,7 @@
     <string name="api_license_wu">Climate data is collected using the WeatherUnderground API; http://www.wunderground.com/</string>
 
     <!-- Explanation Fragment -->
+    <string name="welcome">Welcome to %s</string>
     <string name="next">Next</string>
     <string name="prev">Previous</string>
     <string name="proceed">Proceed</string>
@@ -26,6 +27,12 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="plan">Plan</string>
-    <string name="date_notpossible">The selected date is not available</string>
+    <string name="date_notpossible">The selected date is invalid</string>
+    <string name="location_notfound">The entered location could not be found.</string>
+    <string name="no_date">No date selected</string>
+
+    <!-- NoPlanFragment -->
+    <string name="no_plan">You don\'t have a planned trip.\nPress the button below to plan a new trip.</string>
+    <string name="plan_new_trip">Plan new trip</string>
 
 </resources>

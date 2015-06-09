@@ -56,6 +56,8 @@ public class ExplanationActivity extends BaseActivity {
 
         mViewPager.addOnPageChangeListener(mOnPageChangeListener);
         mPrevButton.setVisibility(View.GONE);
+
+        getSupportActionBar().setTitle(getString(R.string.welcome, getString(R.string.app_name)));
     }
 
     /**
@@ -84,6 +86,7 @@ public class ExplanationActivity extends BaseActivity {
         PrefUtils.save(this, Preferences.EXPLANATION_GIVEN, true);
 
         Intent i = new Intent(this, MainActivity.class);
+        i.putExtra(MainActivity.REDIRECT_TO_PLAN, true);
         startActivity(i);
         finish();
     }

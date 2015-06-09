@@ -2,6 +2,8 @@ package nl.teamone.projectholiday.api.objects;
 
 import android.location.Address;
 import android.location.Geocoder;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ import rx.Observable;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
-public class Location {
+public class Location implements Parcelable {
 
     public final String fullDisplayName;
 
@@ -30,7 +32,7 @@ public class Location {
      * @param address
      */
     private Location(Address address) {
-        fullDisplayName = String.format("%s, %s", address.getLocality(), address.getCountryName());
+        fullDisplayName = String.format("%s, %s", (address.getLocality() == null ? address.getSubLocality() : address.getLocality()), address.getCountryName());
         countryFull = address.getCountryName();
         countryISO = address.getCountryCode();
         city = address.getLocality();
@@ -66,4 +68,41 @@ public class Location {
     public String toString() {
         return fullDisplayName;
     }
+
+    protected Location(Parcel in) {
+        fullDisplayName = in.readString();
+        countryFull = in.readString();
+        countryISO = in.readString();
+        city = in.readString();
+        latitude = in.readDouble();
+        longitude = in.readDouble();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(fullDisplayName);
+        dest.writeString(countryFull);
+        dest.writeString(countryISO);
+        dest.writeString(city);
+        dest.writeDouble(latitude);
+        dest.writeDouble(longitude);
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Location> CREATOR = new Parcelable.Creator<Location>() {
+        @Override
+        public Location createFromParcel(Parcel in) {
+            return new Location(in);
+        }
+
+        @Override
+        public Location[] newArray(int size) {
+            return new Location[size];
+        }
+    };
 }

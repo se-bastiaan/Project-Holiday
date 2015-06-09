@@ -9,6 +9,8 @@ import java.util.Timer;
 import nl.teamone.projectholiday.Preferences;
 import nl.teamone.projectholiday.R;
 import nl.teamone.projectholiday.api.objects.Location;
+import nl.teamone.projectholiday.ui.fragments.NoPlanFragment;
+import nl.teamone.projectholiday.ui.fragments.PlanFragment;
 import nl.teamone.projectholiday.utils.PrefUtils;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -19,6 +21,8 @@ import timber.log.Timber;
  * The main activity of the application. If the user has a planned trip, then this activity will show the right fragment
  */
 public class MainActivity extends BaseActivity {
+
+    public static final String REDIRECT_TO_PLAN = "redir_to_plan";
 
     /**
      * Android Lifecycle onCreate
@@ -33,11 +37,16 @@ public class MainActivity extends BaseActivity {
             startActivity(intent);
             finish();
             return;
-        } else if (!PrefUtils.get(this, Preferences.HAS_PLAN, false)) {
-            Intent intent = new Intent(this, PlanActivity.class);
-            startActivity(intent);
-            finish();
-            return;
+        }
+
+        if(getIntent().hasExtra(REDIRECT_TO_PLAN)) {
+            PlanActivity.startActivityForResult(this);
+        }
+
+        if(!PrefUtils.get(this, Preferences.HAS_PLAN, false)) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, NoPlanFragment.getInstance()).commit();
+        } else {
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, PlanFragment.getInstance()).commit();
         }
 
         getData();

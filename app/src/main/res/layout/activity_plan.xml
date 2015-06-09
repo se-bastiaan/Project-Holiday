@@ -70,7 +70,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/edittext_top"
                     android:singleLine="true"
-                    android:hint="@string/date_hint" />
+                    android:hint="@string/date_hint"
+                    android:focusable="false" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -126,7 +127,7 @@
                         app:dsb_max="30"
                         app:dsb_progressColor="@color/accent"
                         app:dsb_trackColor="@color/accent"
-                        app:dsb_indicatorColor="@color/primary" />
+                        app:dsb_indicatorColor="@color/accent" />
                 </RelativeLayout>
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -165,7 +166,6 @@
                         android:layout_height="wrap_content"
                         android:textOn="@string/yes"
                         android:textOff="@string/yes"
-                        android:theme="@style/Theme.ProjectHoliday.ToggleButton"
                         />
                     <ToggleButton
                         android:id="@+id/dresses_no"
@@ -173,7 +173,6 @@
                         android:layout_height="wrap_content"
                         android:textOn="@string/no"
                         android:textOff="@string/no"
-                        android:theme="@style/Theme.ProjectHoliday.ToggleButton"
                         />
                 </LinearLayout>
             </LinearLayout>
