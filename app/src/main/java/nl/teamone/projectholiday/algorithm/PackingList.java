@@ -8,16 +8,16 @@ import nl.teamone.projectholiday.api.objects.WeatherPeriod;
 
 public class PackingList {
     private ArrayList<Day> mHoliday;
-    private Gender mGender;
     private ArrayList<Clothing> mClothingList;
+    private boolean mDresses;
 
     /**
      * Constructor which makes an array list with days
      * @param period
      */
-    public PackingList(WeatherPeriod period, Gender gender) {
+    public PackingList(WeatherPeriod period, boolean dresses) {
         mHoliday = new ArrayList<>();
-        mGender = gender;
+        mDresses = dresses;
         for (WeatherDay day : period.getWeatherData()) {
             mHoliday.add(new Day(day));
         }
@@ -92,8 +92,8 @@ public class PackingList {
         addPants();
         addTShirts();
 
-        if (mGender == Gender.FEMALE)
-            addDresses(); //Unless you are transgender, but we assume the user isn't
+        if (mDresses)
+            addDresses();
 
         addSweaters();
         addUnderStuff();
