@@ -1,6 +1,5 @@
 package nl.teamone.projectholiday.api;
 
-import java.util.Calendar;
 import java.util.Date;
 
 import nl.teamone.projectholiday.api.objects.Location;
@@ -67,13 +66,13 @@ public class OpenWeatherMapApi extends DataRetriever {
             WeatherDay day = new WeatherDay(dailyDate, loc, PredictionType.FORECAST);
 
             // Set the data to match the day.
-            day.setmRainAmountinMillimeter((int) response.list.get(i).rain._3h);
-            day.setmRainPercentChance(0); //TODO: Figure this shit out.
-            day.setmTemperatureHigh((int)response.list.get(i).temp.max);
-            day.setmTemperatureLow((int)response.list.get(i).temp.min);
-            day.setmTemperatureMean((int)response.list.get(i).temp.day);
-            day.setmTemperatureFeelsLike(0); //TODO: Also figure this shit out.
-            day.setmWindSpeed((int)response.list.get(i).wind.speed);
+            day.setRainAmountInMillimeter((int) response.list.get(i).rain._3h);
+            day.setRainPercentChance(0); //TODO: Figure this shit out.
+            day.setTemperatureHigh((int) response.list.get(i).temp.max);
+            day.setTemperatureLow((int) response.list.get(i).temp.min);
+            day.setTemperatureMean((int) response.list.get(i).temp.day);
+            day.setTemperatureFeelsLike(0); //TODO: Also figure this shit out.
+            day.setWindSpeed((int) response.list.get(i).wind.speed);
 
             period.addWeatherDay(day);
         }

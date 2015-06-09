@@ -81,8 +81,8 @@ public class PackingList {
     private int lowestTemp() {
         int lowestTemp = 100;
         for (Day day : mHoliday) {
-            if (day.getWeatherDay().getTempLow() < 100) {
-                lowestTemp = day.getWeatherDay().getTempFeel();
+            if (day.getWeatherDay().getTemperatureLow() < 100) {
+                lowestTemp = day.getWeatherDay().getTemperatureFeel();
             }
         }
         return lowestTemp;

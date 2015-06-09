@@ -72,9 +72,9 @@ public class WeatherPeriod {
         for (WeatherDay day : weatherData) {
 
             // Update total rain days.
-            if (day.getRainPerc() >= RAINCHANCELOW) {
-                if (day.getRainPerc() >= RAINCHANCEMID) {
-                    if (day.getRainPerc() >= RAINCHANCEHIGH) {
+            if (day.getRainPercentChance() >= RAINCHANCELOW) {
+                if (day.getRainPercentChance() >= RAINCHANCEMID) {
+                    if (day.getRainPercentChance() >= RAINCHANCEHIGH) {
                         totalDaysRainChanceHigh++;
                     } else {
                         totalDaysRainChanceMid++;
@@ -87,9 +87,9 @@ public class WeatherPeriod {
             }
 
             // Update total temperature days.
-            if (day.getTempFeel() < TEMPERATUREHIGH) {
-                if (day.getTempFeel() < TEMPERATUREMID) {
-                    if (day.getTempFeel() < TEMPERATURELOW) {
+            if (day.getTemperatureFeel() < TEMPERATUREHIGH) {
+                if (day.getTemperatureFeel() < TEMPERATUREMID) {
+                    if (day.getTemperatureFeel() < TEMPERATURELOW) {
                         totalDaysTemperatureLow++;
                     } else {
                         totalDaysTemperatureMid++;

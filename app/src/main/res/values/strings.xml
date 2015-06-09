@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Project Holiday</string>
 
-
+    <!-- Explanation Fragment -->
+    <string name="next">Next</string>
+    <string name="prev">Previous</string>
+    <string name="proceed">Proceed</string>
 </resources>

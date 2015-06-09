@@ -1,21 +1,29 @@
 package nl.teamone.projectholiday.algorithm;
 
 public class Clothing {
-    private String id_name;
-    private int quantity;
+    private String mId;
+    private int mQuantity;
 
     public Clothing(String name, int quantity) {
-        this.id_name = name;
-        this.quantity = quantity;
+        mId = name;
+        mQuantity = quantity;
+    }
+
+    public String getId() {
+        return mId;
+    }
+
+    public int getQuantity() {
+        return mQuantity;
     }
 
     @Override
     public String toString() {
         String str = "";
-        if (quantity > 1) {
-            str = id_name + ": " + quantity + " times.\n";
-        } else if (quantity == 1) {
-            str = id_name + ": " + quantity + " time.\n";
+        if (mQuantity > 1) {
+            str = mId + ": " + mQuantity + " times.\n";
+        } else if (mQuantity == 1) {
+            str = mId + ": " + mQuantity + " time.\n";
         }
         return str;
     }

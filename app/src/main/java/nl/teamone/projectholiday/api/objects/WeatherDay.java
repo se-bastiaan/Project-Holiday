@@ -25,60 +25,64 @@ public class WeatherDay {
         mPredictionType = predictionType;
     }
 
-    public void setmTemperatureHigh(int mTemperatureHigh) {
-        this.mTemperatureHigh = mTemperatureHigh;
+    public void setTemperatureHigh(int temperatureHigh) {
+        mTemperatureHigh = temperatureHigh;
     }
 
-    public void setmTemperatureMean(int mTemperatureMean) {
-        this.mTemperatureMean = mTemperatureMean;
+    public void setTemperatureMean(int temperatureMean) {
+        mTemperatureMean = temperatureMean;
     }
 
-    public void setmTemperatureLow(int mTemperatureLow) {
-        this.mTemperatureLow = mTemperatureLow;
+    public void setTemperatureLow(int temperatureLow) {
+        mTemperatureLow = temperatureLow;
     }
 
-    public void setmTemperatureFeelsLike(int mTemperatureFeelsLike) {
-        this.mTemperatureFeelsLike = mTemperatureFeelsLike;
+    public void setTemperatureFeelsLike(int temperatureFeelsLike) {
+        mTemperatureFeelsLike = temperatureFeelsLike;
     }
 
-    public void setmWindSpeed(int mWindSpeed) {
-        this.mWindSpeed = mWindSpeed;
+    public void setWindSpeed(int windSpeed) {
+        mWindSpeed = windSpeed;
     }
 
-    public void setmRainAmountinMillimeter(int mRainAmountinMillimeter) {
-        this.mRainAmountinMillimeter = mRainAmountinMillimeter;
+    public void setRainAmountInMillimeter(int tainAmountinMillimeter) {
+        mRainAmountinMillimeter = tainAmountinMillimeter;
     }
 
-    public void setmRainPercentChance(int mRainPercentChance) {
-        this.mRainPercentChance = mRainPercentChance;
+    public void setRainPercentChance(int rainPercentChance) {
+        mRainPercentChance = rainPercentChance;
     }
 
     public PredictionType getPredictionType() {
         return mPredictionType;
     }
 
-    public int getRainPerc() {
+    public int getRainPercentChance() {
         return mRainPercentChance;
     }
 
-    public int getRainMM() {
+    public int getRainAmountInMillimeter() {
         return mRainAmountinMillimeter;
     }
 
-    public int getTempHigh() {
+    public int getTemperatureHigh() {
         return mTemperatureHigh;
     }
 
-    public int getTempMean() {
+    public int getTemperatureMean() {
         return mTemperatureMean;
     }
 
-    public int getTempLow() {
+    public int getTemperatureLow() {
         return mTemperatureLow;
     }
 
-    public int getTempFeel() {
+    public int getTemperatureFeel() {
         return mTemperatureFeelsLike;
+    }
+
+    public int getWindSpeed() {
+        return mWindSpeed;
     }
 
 
