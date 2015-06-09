@@ -44,6 +44,10 @@ public class API extends DataRetriever {
 
     }
 
+    public static Observable<WeatherDay> getCurrentWeather (Location loc) {
+        return OpenWeatherMapApi.getCurrentWeather(loc);
+    }
+
     public static PredictionType getBestPredictionType(Date from, Date to) {
         if (OpenWeatherMapApi.getBestPredictionType(from, to) == PredictionType.FORECAST)
             return PredictionType.FORECAST;
