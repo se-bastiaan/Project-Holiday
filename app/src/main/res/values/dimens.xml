@@ -7,4 +7,10 @@
 
     <!-- Explanation Fragment -->
     <dimen name="explanation_side_distance">10dp</dimen>
+
+    <dimen name="edittext_top">4dp</dimen>
+    <dimen name="card_padding">16dp</dimen>
+    <dimen name="card_elevation">1dp</dimen>
+    <dimen name="card_corner">2dp</dimen>
+    <dimen name="card_item_distance">8dp</dimen>
 </resources>

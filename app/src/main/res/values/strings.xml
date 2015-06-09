@@ -9,4 +9,23 @@
     <string name="next">Next</string>
     <string name="prev">Previous</string>
     <string name="proceed">Proceed</string>
+
+    <string name="explanation1">Explanation1</string>
+    <string name="explanation2">Explanation2</string>
+    <string name="explanation3">Explanation3</string>
+    <string name="explanation4">Explanation4, click proceed to continue.</string>
+
+    <!-- PlanActivity -->
+    <string name="where_going_to">Where are you going to?</string>
+    <string name="when_going">When are you going?</string>
+    <string name="how_many_night">How many nights are you staying?</string>
+    <string name="dresses">Do you wear dresses?</string>
+
+    <string name="loc_hint">Londen, Paris, Nijmegen…</string>
+    <string name="date_hint">16–05–2015</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="plan">Plan</string>
+    <string name="date_notpossible">The selected date is not available</string>
+
 </resources>

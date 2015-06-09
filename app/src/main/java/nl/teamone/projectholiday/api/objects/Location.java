@@ -39,9 +39,9 @@ public class Location {
     }
 
     /**
-     * Converts a string to a location
-     * @param location
-     * @return location
+     * Find location lat and long by given string name
+     * @param location {@link String}
+     * @return {@link Observable}
      */
     public static Observable<List<Location>> find(String location) {
         return Observable.just(location).subscribeOn(Schedulers.newThread())

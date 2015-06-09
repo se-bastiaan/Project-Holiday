@@ -15,6 +15,13 @@ import rx.functions.Func2;
  */
 public class API extends DataRetriever {
 
+    /**
+     * Get {@link Observable} that contains a {@link WeatherPeriod}
+     * @param loc {@link Location}
+     * @param from {@link Date}
+     * @param to {@link Date}
+     * @return {@link Observable}
+     */
     public static Observable<WeatherPeriod> getWeatherData(Location loc, Date from, Date to) {
         Date now = new Date();
 
