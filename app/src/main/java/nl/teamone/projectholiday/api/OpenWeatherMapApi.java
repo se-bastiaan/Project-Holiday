@@ -65,6 +65,10 @@ public class OpenWeatherMapApi extends DataRetriever {
             day.setRainAmountInMillimeter((int) response.list.get(i).rain._3h);
             if (response.list.get(i).weather.description.equalsIgnoreCase("Rain"))
                 day.setRainPercentChance(100);
+            else if (response.list.get(i).weather.description.equalsIgnoreCase("Drizzle"))
+                day.setRainPercentChance(60);
+            else if (response.list.get(i).weather.description.equalsIgnoreCase("Thunderstorm"))
+                day.setRainPercentChance(100);
             else
                 day.setRainPercentChance(0);
             day.setTemperatureHigh((int) response.list.get(i).temp.max);

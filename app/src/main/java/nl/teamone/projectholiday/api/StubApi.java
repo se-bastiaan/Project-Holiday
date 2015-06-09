@@ -17,10 +17,6 @@ public class StubApi extends DataRetriever {
         return Observable.just(weatherPeriod);
     }
 
-    public static WeatherDay getCurrentWeather(Location loc) {
-        return null;
-    }
-
     public static PredictionType getBestPredictionType(Date from, Date to) {
         return PredictionType.CLIMATE;
     }
