@@ -12,9 +12,9 @@
     <string name="prev">Previous</string>
     <string name="proceed">Proceed</string>
 
-    <string name="explanation1">Welkom! Met deze app kan je een paklijst laten samen stellen afgestemd op jouw vakantie.</string>
-    <string name="explanation2">Je moet straks eerst invullen wanneer, waar en hoe lang je op vakantie gaat. Als je vervolgens op plan drukt krijg je een paklijst.</string>
-    <string name="explanation3">Mochten er grote verandering komen in het weer van jouw bestemming dan krijg je een melding over de veranderingen in de paklijst.</string>
+    <string name="explanation1">Welkom! Met deze app kun je een paklijst laten samen stellen afgestemd op jouw vakantie.</string>
+    <string name="explanation2">Je moet straks eerst invullen waar, wanneer en hoe lang je op vakantie gaat. Als je vervolgens op plan drukt krijg je een paklijst.</string>
+    <string name="explanation3">Mochten er grote verandering komen in de weersvoorspellingen van jouw bestemming dan krijg je een melding over de veranderingen in de paklijst.</string>
     <string name="explanation4">Klik op "Verder" om de gegevens over je vakantie in te vullen.</string>
 
     <!-- PlanActivity -->
