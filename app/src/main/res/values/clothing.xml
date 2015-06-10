@@ -77,8 +77,8 @@
         <item quantity="other">umbrellas</item>
     </plurals>
     <plurals name="pet">
-        <item quantity="one">pet</item>
-        <item quantity="other">pets</item>
+        <item quantity="one">sun cap</item>
+        <item quantity="other">sun caps</item>
     </plurals>
     <plurals name="hood">
         <item quantity="one">knitted cap</item>
