@@ -3,6 +3,9 @@ package nl.teamone.projectholiday.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 public class PrefUtils {
 
     private static final String PREFS_FILE = "nl.teamone.settingsun.prefs";
@@ -14,6 +17,18 @@ public class PrefUtils {
      */
     public static void clear(Context context) {
         getPrefs(context).edit().clear().apply();
+    }
+
+    /**
+     * Save an object to the central {@link SharedPreferences}
+     *
+     * @param context Context
+     * @param key     Key of the preference
+     * @param value   Value of the preference
+     */
+    public static void save(Context context, String key, Object value) {
+        Gson gson = new GsonBuilder().create();
+        getPrefs(context).edit().putString(key, gson.toJson(value)).apply();
     }
 
     /**
@@ -48,6 +63,22 @@ public class PrefUtils {
      */
     public static void save(Context context, String key, boolean value) {
         getPrefs(context).edit().putBoolean(key, value).apply();
+    }
+
+    /**
+     * Get a saved object from the central {@link SharedPreferences}
+     *
+     * @param context      Context
+     * @param key          Key of the preference
+     * @return The saved bool
+     */
+    public static <T> T get(Context context, String key, Class<T> classType) {
+        SharedPreferences preferences = getPrefs(context);
+        if(preferences.contains(key)) {
+            Gson gson = new GsonBuilder().create();
+            return (T) gson.fromJson(preferences.getString(key, ""), classType);
+        }
+        return null;
     }
 
     /**

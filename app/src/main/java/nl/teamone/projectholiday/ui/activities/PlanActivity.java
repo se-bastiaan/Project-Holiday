@@ -84,7 +84,7 @@ public class PlanActivity extends BaseActivity {
                         if (locations.size() > 0) {
                             Intent intent = new Intent();
                             intent.putExtra(EXTRA_DATA, new PlanData(locations.get(0), mSelectedDate.getTime(), Integer.parseInt(mNightsEditText.getText().toString()), mDresses));
-                            setResult(DATA, intent);
+                            setResult(RESULT_OK, intent);
                             finish();
                         } else {
                             mLocationEditText.setError(getString(R.string.location_notfound));

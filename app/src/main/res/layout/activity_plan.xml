@@ -36,7 +36,7 @@
                     android:id="@+id/location_input"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/edittext_top"
+                    android:layout_marginTop="@dimen/margin_top"
                     android:singleLine="true"
                     android:hint="@string/loc_hint" />
             </LinearLayout>
@@ -68,7 +68,7 @@
                     android:inputType="date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/edittext_top"
+                    android:layout_marginTop="@dimen/margin_top"
                     android:singleLine="true"
                     android:hint="@string/date_hint"
                     android:focusable="false" />
@@ -99,7 +99,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/edittext_top">
+                    android:layout_marginTop="@dimen/margin_top">
                     <EditText
                         android:id="@+id/progress_input"
                         android:layout_width="wrap_content"
@@ -159,7 +159,7 @@
                     android:gravity="center"
                     android:layout_gravity="center"
                     android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/edittext_top">
+                    android:layout_marginTop="@dimen/margin_top">
                     <ToggleButton
                         android:id="@+id/dresses_yes"
                         android:layout_width="wrap_content"

@@ -43,5 +43,7 @@
     <string name="remove_plan">Remove current trip</string>
     <string name="about">About</string>
     <string name="trip_to">Your planned trip to: %s</string>
+    <string name="unknown_error">Something went wrong!</string>
+    <string name="current_weather">Current weather</string>
 
 </resources>

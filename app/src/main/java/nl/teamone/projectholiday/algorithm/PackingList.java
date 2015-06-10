@@ -13,6 +13,7 @@ public class PackingList {
 
     /**
      * Constructor which makes an array list with days
+     *
      * @param period
      */
     public PackingList(WeatherPeriod period, boolean dresses) {
@@ -27,6 +28,7 @@ public class PackingList {
 
     /**
      * Counts the number of days with the given day type
+     *
      * @param type {@link DayType}
      * @return numberOfDays
      */
@@ -42,6 +44,7 @@ public class PackingList {
 
     /**
      * Counter for number of nights with the given type
+     *
      * @param type {@link NightType}
      * @return nrOfDays
      */
@@ -57,6 +60,7 @@ public class PackingList {
 
     /**
      * Getter for total number of days
+     *
      * @return nrOfDays
      */
     private int getTotalDays() {
@@ -71,6 +75,7 @@ public class PackingList {
 
     /**
      * Checks for lowest temperature during the entire holiday
+     *
      * @return lowestTemp
      */
     private int lowestTemp() {
@@ -110,12 +115,12 @@ public class PackingList {
      * Adds pants+shorts
      */
     private void addPants() {
-        int nrOfPants =( (countDayTypes(DayType.LEVEL1) + countDayTypes(DayType.LEVEL2) + countDayTypes(DayType.LEVEL3) + countDayTypes(DayType.LEVEL4) + countDayTypes(DayType.LEVEL5)) / 3)+1;
-        int nrOfShorts =( (countDayTypes(DayType.LEVEL6) + countDayTypes(DayType.LEVEL7)) / 3)+1;
-        if(nrOfPants!=0) {
+        int nrOfPants = ((countDayTypes(DayType.LEVEL1) + countDayTypes(DayType.LEVEL2) + countDayTypes(DayType.LEVEL3) + countDayTypes(DayType.LEVEL4) + countDayTypes(DayType.LEVEL5)) / 3) + 1;
+        int nrOfShorts = ((countDayTypes(DayType.LEVEL6) + countDayTypes(DayType.LEVEL7)) / 3) + 1;
+        if (nrOfPants != 0) {
             mClothingList.add(new Clothing("pants", nrOfPants));
         }
-        if(nrOfShorts!=0) {
+        if (nrOfShorts != 0) {
             mClothingList.add(new Clothing("shorts", nrOfShorts));
         }
     }
@@ -126,10 +131,10 @@ public class PackingList {
     private void addTShirts() {
         int nrOfShortSleeve = (countDayTypes(DayType.LEVEL4) + countDayTypes(DayType.LEVEL5) + countDayTypes(DayType.LEVEL6) + countDayTypes(DayType.LEVEL7));
         int nrOfLongSleeve = (countDayTypes(DayType.LEVEL1) + countDayTypes(DayType.LEVEL2) + countDayTypes(DayType.LEVEL3));
-        if(nrOfShortSleeve!=0) {
+        if (nrOfShortSleeve != 0) {
             mClothingList.add(new Clothing("short_sleeve_shirts", nrOfShortSleeve));
         }
-        if(nrOfLongSleeve!=0) {
+        if (nrOfLongSleeve != 0) {
             mClothingList.add(new Clothing("long_sleeve_shirts", nrOfLongSleeve));
         }
     }
@@ -139,7 +144,7 @@ public class PackingList {
      */
     private void addDresses() {
         int nrOfDresses = countDayTypes(DayType.LEVEL6) + countDayTypes(DayType.LEVEL7);
-        if(nrOfDresses!=0){
+        if (nrOfDresses != 0) {
             mClothingList.add(new Clothing("dresses", nrOfDresses));
         }
 
@@ -150,8 +155,8 @@ public class PackingList {
      * Adds sweaters
      */
     private void addSweaters() {
-        int nrOfSweaters =( (countDayTypes(DayType.LEVEL1) + countDayTypes(DayType.LEVEL2) + countDayTypes(DayType.LEVEL3) + countDayTypes(DayType.LEVEL4) + countDayTypes(DayType.LEVEL5)) / 3)+1;
-        if(nrOfSweaters!=0) {
+        int nrOfSweaters = ((countDayTypes(DayType.LEVEL1) + countDayTypes(DayType.LEVEL2) + countDayTypes(DayType.LEVEL3) + countDayTypes(DayType.LEVEL4) + countDayTypes(DayType.LEVEL5)) / 3) + 1;
+        if (nrOfSweaters != 0) {
             mClothingList.add(new Clothing("sweaters", nrOfSweaters));
         }
     }
@@ -161,19 +166,19 @@ public class PackingList {
      */
     private void addUnderStuff() {
         int nrOfSocks = (getTotalDays() - countDayTypes(DayType.LEVEL7));
-        if(nrOfSocks!=0) {
+        if (nrOfSocks != 0) {
             mClothingList.add(new Clothing("socks", nrOfSocks));
         }
         int nrOfUnderwear = getTotalDays();
-        if(nrOfUnderwear!=0) {
+        if (nrOfUnderwear != 0) {
             mClothingList.add(new Clothing("underwear", nrOfUnderwear));
         }
-        int nrOfThinPJs =( countNightTypes(NightType.LEVEL2) / 3)+1;
-        if(nrOfThinPJs!=0) {
+        int nrOfThinPJs = (countNightTypes(NightType.LEVEL2) / 3) + 1;
+        if (nrOfThinPJs != 0) {
             mClothingList.add(new Clothing("thin_pyjamas", nrOfThinPJs));
         }
-        int nrOfThickPJs =( countNightTypes(NightType.LEVEL1) / 3)+1;
-        if (nrOfThickPJs!=0) {
+        int nrOfThickPJs = (countNightTypes(NightType.LEVEL1) / 3) + 1;
+        if (nrOfThickPJs != 0) {
             mClothingList.add(new Clothing("thick_pyjamas", nrOfThickPJs));
         }
     }
@@ -239,6 +244,7 @@ public class PackingList {
 
     /**
      * Getter for clothing list
+     *
      * @return mClothingList
      */
     public ArrayList<Clothing> getClothingList() {

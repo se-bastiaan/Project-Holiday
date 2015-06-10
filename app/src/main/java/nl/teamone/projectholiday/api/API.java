@@ -4,10 +4,14 @@ import java.util.Date;
 
 import nl.teamone.projectholiday.api.objects.Location;
 import nl.teamone.projectholiday.api.objects.PredictionType;
+import nl.teamone.projectholiday.api.objects.WeatherData;
 import nl.teamone.projectholiday.api.objects.WeatherPeriod;
+import nl.teamone.projectholiday.api.responses.openweathermap.Daily;
 import nl.teamone.projectholiday.api.responses.openweathermap.Response;
 import rx.Observable;
+import rx.functions.Func1;
 import rx.functions.Func2;
+import timber.log.Timber;
 
 /**
  * Class that determines which API will be used and forwards the request to the appropriate one
@@ -50,8 +54,14 @@ public class API extends DataRetriever {
 
     }
 
-    public static Observable<Response> getCurrentWeather (Location loc) {
-        return OpenWeatherMapApi.getCurrentWeather(loc);
+    public static Observable<WeatherData> getCurrentWeather(Location loc) {
+        return OpenWeatherMapApi.getCurrentWeather(loc)
+                .map(new Func1<Daily, WeatherData>() {
+                    @Override
+                    public WeatherData call(Daily daily) {
+                        return new WeatherData(daily);
+                    }
+                });
     }
 
     public static PredictionType getBestPredictionType(Date from, Date to) {

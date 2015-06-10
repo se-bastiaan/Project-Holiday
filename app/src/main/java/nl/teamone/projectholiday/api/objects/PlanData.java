@@ -1,9 +1,17 @@
 package nl.teamone.projectholiday.api.objects;
 
+import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.util.Calendar;
 import java.util.Date;
+
+import nl.teamone.projectholiday.Preferences;
+import nl.teamone.projectholiday.utils.PrefUtils;
 
 public class PlanData implements Parcelable {
     public final Location location;
@@ -24,6 +32,13 @@ public class PlanData implements Parcelable {
         departureDate = tmpDepartureDate != -1 ? new Date(tmpDepartureDate) : null;
         nights = in.readInt();
         enableDresses = in.readByte() != 0x00;
+    }
+
+    public Date getReturnDate() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(departureDate);
+        calendar.add(Calendar.DAY_OF_YEAR, nights);
+        return calendar.getTime();
     }
 
     @Override
@@ -51,4 +66,12 @@ public class PlanData implements Parcelable {
             return new PlanData[size];
         }
     };
+
+    public void saveToPrefs(Context context) {
+        PrefUtils.save(context, Preferences.PLAN, this);
+    }
+
+    public static PlanData getFromPrefs(Context context) {
+        return PrefUtils.get(context, Preferences.PLAN, PlanData.class);
+    }
 }

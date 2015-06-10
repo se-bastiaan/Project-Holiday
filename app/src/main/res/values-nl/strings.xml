@@ -37,7 +37,9 @@
 
     <!-- NoPlanFragment -->
     <string name="no_plan">Op dit moment heb je geen geplande vakantie. \nPlan een vakantie door op de knop te drukken.</string>
+    <string name="about">Over</string>
     <string name="plan_new_trip">Plan nieuwe vakantie.</string>
-
+    <string name="unknown_error">Er ging iets fout!</string>
+    <string name="current_weather">Huidig weer</string>
 
 </resources>

@@ -47,7 +47,7 @@ public abstract class DataRetriever {
      * @return total days
      */
     public static Integer getDuration(Date from, Date to) {
-        return 1 + ((int) ((from.getTime() - to.getTime()) / DAY_IN_MILLIS));
+        return 1 + ((int) ((to.getTime() - from.getTime()) / DAY_IN_MILLIS));
     }
 
 }

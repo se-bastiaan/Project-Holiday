@@ -3,19 +3,12 @@ package nl.teamone.projectholiday.ui.activities;
 import android.content.Intent;
 import android.os.Bundle;
 
-import java.util.List;
-import java.util.Timer;
-
 import nl.teamone.projectholiday.Preferences;
 import nl.teamone.projectholiday.R;
-import nl.teamone.projectholiday.api.objects.Location;
+import nl.teamone.projectholiday.api.objects.PlanData;
 import nl.teamone.projectholiday.ui.fragments.NoPlanFragment;
 import nl.teamone.projectholiday.ui.fragments.PlanFragment;
 import nl.teamone.projectholiday.utils.PrefUtils;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
-import timber.log.Timber;
 
 /**
  * The main activity of the application. If the user has a planned trip, then this activity will show the right fragment
@@ -23,6 +16,8 @@ import timber.log.Timber;
 public class MainActivity extends BaseActivity {
 
     public static final String REDIRECT_TO_PLAN = "redir_to_plan";
+
+    private PlanData mPlanData;
 
     /**
      * Android Lifecycle onCreate
@@ -43,23 +38,22 @@ public class MainActivity extends BaseActivity {
             PlanActivity.startActivityForResult(this);
         }
 
-        if(!PrefUtils.get(this, Preferences.HAS_PLAN, false)) {
+        if((mPlanData = PlanData.getFromPrefs(this)) == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, NoPlanFragment.getInstance()).commit();
         } else {
-            getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, PlanFragment.getInstance()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, PlanFragment.getInstance(mPlanData)).commit();
         }
-
-        getData();
     }
 
-    private void getData() {
-        Location.find("Vossendijk, Nijmegen").observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<List<Location>>() {
-            @Override
-            public void call(List<Location> locations) {
-                for (Location loc : locations)
-                    Timber.d("Location: %s", loc.toString());
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK) {
+            if(requestCode == PlanActivity.DATA) {
+                mPlanData = data.getParcelableExtra(PlanActivity.EXTRA_DATA);
+                mPlanData.saveToPrefs(this);
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, PlanFragment.getInstance(mPlanData)).commit();
             }
-        });
+        }
     }
-
 }

@@ -11,14 +11,16 @@ import nl.teamone.projectholiday.api.responses.openweathermap.Response;
 import nl.teamone.projectholiday.api.services.OpenWeatherMapService;
 import retrofit.RestAdapter;
 import rx.Observable;
+import rx.functions.Action1;
 import rx.functions.Func1;
+import timber.log.Timber;
 
 public class OpenWeatherMapApi extends DataRetriever {
 
     public static final String requiredMode = "json";
     public static final String baseURL = "http://api.openweathermap.org";
 
-    public static Observable<Response> getCurrentWeather(final Location loc) {
+    public static Observable<Daily> getCurrentWeather(final Location loc) {
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint(baseURL)
                 .build();
@@ -28,7 +30,13 @@ public class OpenWeatherMapApi extends DataRetriever {
         return apiRetriever.getCurrentWeather(
                 Double.toString(loc.latitude),
                 Double.toString(loc.longitude),
-                requiredMode);
+                requiredMode)
+                .doOnError(new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        throwable.printStackTrace();
+                    }
+                });
     }
 
     /**
@@ -116,12 +124,16 @@ public class OpenWeatherMapApi extends DataRetriever {
         WeatherDay day = new WeatherDay(date, loc, PredictionType.FORECAST);
 
         // Set the data to match the day.
-        day.setRainAmountInMillimeter((dayInfo.rain == null) ? 0 : (int) dayInfo.rain._3h);
-        if (dayInfo.weather.description.equalsIgnoreCase("Rain"))
+        try {
+            day.setRainAmountInMillimeter((int) dayInfo.rain._3h);
+        } catch(NullPointerException e) {
+            day.setRainAmountInMillimeter(0);
+        }
+        if (dayInfo.weather.get(0).description.equalsIgnoreCase("Rain"))
             day.setRainPercentChance(100);
-        else if (dayInfo.weather.description.equalsIgnoreCase("Drizzle"))
+        else if (dayInfo.weather.get(0).description.equalsIgnoreCase("Drizzle"))
             day.setRainPercentChance(60);
-        else if (dayInfo.weather.description.equalsIgnoreCase("Thunderstorm"))
+        else if (dayInfo.weather.get(0).description.equalsIgnoreCase("Thunderstorm"))
             day.setRainPercentChance(100);
         else
             day.setRainPercentChance(0);

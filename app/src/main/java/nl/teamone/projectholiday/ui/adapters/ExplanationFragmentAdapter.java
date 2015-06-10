@@ -1,4 +1,4 @@
-package nl.teamone.projectholiday.ui.fragments.adapters;
+package nl.teamone.projectholiday.ui.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

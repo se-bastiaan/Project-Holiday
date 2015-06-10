@@ -6,11 +6,7 @@ public class Preferences {
      */
     public static final String EXPLANATION_GIVEN = "expl_giv";
     /**
-     * Has a plan
+     * The data of the planned trip
      */
-    public static final String HAS_PLAN = "has_plan";
-    /**
-     * Planned destination
-     */
-    public static final String PLAN_DESTINATION = "plan_destination";
+    public static final String PLAN = "plan";
 }

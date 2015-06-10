@@ -15,7 +15,7 @@ import butterknife.OnClick;
 import nl.teamone.projectholiday.Preferences;
 import nl.teamone.projectholiday.R;
 import nl.teamone.projectholiday.ui.fragments.ExplanationFragment;
-import nl.teamone.projectholiday.ui.fragments.adapters.ExplanationFragmentAdapter;
+import nl.teamone.projectholiday.ui.adapters.ExplanationFragmentAdapter;
 import nl.teamone.projectholiday.utils.PrefUtils;
 
 /**
