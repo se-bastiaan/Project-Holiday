@@ -47,7 +47,7 @@ public class ExplanationActivity extends BaseActivity {
         Fragment[] fragments = new Fragment[]{
                 ExplanationFragment.getInstance(R.drawable.explanation1, R.string.explanation1),
                 ExplanationFragment.getInstance(R.drawable.explanation2, R.string.explanation2),
-                ExplanationFragment.getInstance(R.drawable.explanation3, R.string.explanation3),
+                ExplanationFragment.getInstance(R.drawable.explanation2, R.string.explanation3),
                 ExplanationFragment.getInstance(R.drawable.explanation4, R.string.explanation4, R.string.proceed)
         };
         PagerAdapter adapter = new ExplanationFragmentAdapter(getSupportFragmentManager(), fragments);
