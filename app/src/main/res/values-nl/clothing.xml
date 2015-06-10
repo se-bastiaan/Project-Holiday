@@ -74,7 +74,7 @@
     </plurals>
     <plurals name="umbrella">
         <item quantity="one">paraplu</item>
-        <item quantity="other">paraplu's</item>
+        <item quantity="other">paraplu\'s</item>
     </plurals>
     <plurals name="pet">
         <item quantity="one">pet</item>
