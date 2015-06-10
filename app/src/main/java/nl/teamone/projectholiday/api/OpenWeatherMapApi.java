@@ -82,8 +82,8 @@ public class OpenWeatherMapApi extends DataRetriever {
     }
 
     /**
-     * If response is not OK, returns empty weatherPeriod. Otherwise,
-     * adds a WeatherDay for every day of the vacation toe a WeatherPeriod and
+     * If response is not OK, returns empty weatherPeriod with bestPredictionType as NODATA.
+     * Otherwise, adds a WeatherDay for every day of the vacation toe a WeatherPeriod and
      * returns that new WeatherPeriod
      * @param response
      * @param from
@@ -116,7 +116,7 @@ public class OpenWeatherMapApi extends DataRetriever {
         WeatherDay day = new WeatherDay(date, loc, PredictionType.FORECAST);
 
         // Set the data to match the day.
-        day.setRainAmountInMillimeter((int) dayInfo.rain._3h);
+        day.setRainAmountInMillimeter((dayInfo.rain == null) ? 0 : (int) dayInfo.rain._3h);
         if (dayInfo.weather.description.equalsIgnoreCase("Rain"))
             day.setRainPercentChance(100);
         else if (dayInfo.weather.description.equalsIgnoreCase("Drizzle"))
