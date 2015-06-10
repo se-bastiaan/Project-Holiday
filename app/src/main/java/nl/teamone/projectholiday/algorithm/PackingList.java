@@ -246,8 +246,11 @@ public class PackingList {
     }
 
     public boolean equals(ArrayList<Clothing> clothingList) {
-        // Compare list for any major changes
-
+        for(int i = 0; i<mClothingList.size();i++){
+            if(mClothingList.get(i)!=clothingList.get(i)){
+                return true;
+            }
+        }
         return false;
     }
 
