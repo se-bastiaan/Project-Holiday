@@ -265,7 +265,7 @@ public class PackingList {
      * @param secondList The second list of clothing.
      * @return The amount of clothes that differ. >=0; 0 means the lists are identical.
      */
-    public static int getDifference(ArrayList<Clothing> firstList, ArrayList<Clothing> secondList) {
+    private static int getDifference(ArrayList<Clothing> firstList, ArrayList<Clothing> secondList) {
         int difference = 0;
 
         for (Clothing c : firstList) {
@@ -289,7 +289,7 @@ public class PackingList {
         return difference;
     }
 
-    public static Clothing findClothing(Clothing searchFor, ArrayList<Clothing> list) {
+    private static Clothing findClothing(Clothing searchFor, ArrayList<Clothing> list) {
         for (Clothing c : list) {
             if (c.getId().equalsIgnoreCase(searchFor.getId())) {
                 return c;
