@@ -37,7 +37,7 @@
         <item quantity="other">thin pyjamas</item>
     </plurals>
     <plurals name="thick_pyjamas">
-        <item quantity="one">think pyjamas</item>
+        <item quantity="one">thick pyjamas</item>
         <item quantity="other">thick pyjamas</item>
     </plurals>
     <plurals name="swimwear">
