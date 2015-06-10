@@ -23,8 +23,7 @@
             </intent-filter>
         </activity>
 
-
-
+        <receiver android:name=".background.AlarmReceiver" />
     </application>
 
 </manifest>

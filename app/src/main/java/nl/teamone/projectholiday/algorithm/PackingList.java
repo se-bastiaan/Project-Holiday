@@ -1,10 +1,14 @@
 package nl.teamone.projectholiday.algorithm;
 
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
+import nl.teamone.projectholiday.Preferences;
 import nl.teamone.projectholiday.api.objects.WeatherDay;
 import nl.teamone.projectholiday.api.objects.WeatherPeriod;
+import nl.teamone.projectholiday.utils.PrefUtils;
 import retrofit.http.Path;
 
 public class PackingList {
@@ -296,6 +300,23 @@ public class PackingList {
             }
         }
         return null;
+    }
+
+    /**
+     * Save PackingList to preferences
+     * @param context {@link Context}
+     */
+    public void saveToPrefs(Context context) {
+        PrefUtils.save(context, Preferences.PACKING_LIST, this);
+    }
+
+    /**
+     * Get PackingList from preferences
+     * @param context {@link Context}
+     * @return {@link PackingList}
+     */
+    public static PackingList getFromPrefs(Context context) {
+        return PrefUtils.get(context, Preferences.PACKING_LIST, PackingList.class);
     }
 
     @Override

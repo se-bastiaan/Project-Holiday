@@ -9,4 +9,8 @@ public class Preferences {
      * The data of the planned trip
      */
     public static final String PLAN = "plan";
+    /**
+     * The packing list key
+     */
+    public static final String PACKING_LIST = "packing_list";
 }

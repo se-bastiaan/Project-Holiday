@@ -1,5 +1,8 @@
 package nl.teamone.projectholiday.ui.fragments;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -29,6 +32,8 @@ import nl.teamone.projectholiday.api.objects.PlanData;
 import nl.teamone.projectholiday.api.objects.WeatherData;
 import nl.teamone.projectholiday.api.objects.WeatherObject;
 import nl.teamone.projectholiday.api.objects.WeatherPeriod;
+import nl.teamone.projectholiday.background.AlarmReceiver;
+import nl.teamone.projectholiday.ui.activities.ExplanationActivity;
 import nl.teamone.projectholiday.ui.activities.MainActivity;
 import nl.teamone.projectholiday.ui.adapters.PackingListAdapter;
 import nl.teamone.projectholiday.utils.PrefUtils;
@@ -61,6 +66,18 @@ public class PlanFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPlanData = getArguments().getParcelable(PLAN_DATA);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        AlarmReceiver.cancel(getActivity());
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        AlarmReceiver.planNew(getActivity());
     }
 
     @Nullable
@@ -98,16 +115,14 @@ public class PlanFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.action_remove:
                 PrefUtils.remove(getActivity(), Preferences.PLAN);
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
+                Intent mainIntent = new Intent(getActivity(), MainActivity.class);
+                startActivity(mainIntent);
                 getActivity().finish();
                 break;
-            case R.id.action_about:
-                /*
-                Intent intent = new Intent(getActivity(), AboutActivity.class);
-                startActivity(intent);
+            case R.id.action_explanation:
+                Intent explanationIntent = new Intent(getActivity(), ExplanationActivity.class);
+                startActivity(explanationIntent);
                 getActivity().finish();
-                 */
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -143,6 +158,7 @@ public class PlanFragment extends Fragment {
                     PackingListAdapter adapter = new PackingListAdapter(weatherObject.data, clothingList);
                     mRecyclerView.setAdapter(adapter);
                     mSwipeRefreshLayout.setRefreshing(false);
+                    packingList.saveToPrefs(getActivity());
                 }
             });
         }

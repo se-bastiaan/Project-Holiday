@@ -44,5 +44,8 @@
     <string name="trip_to">Your planned trip to: %s</string>
     <string name="unknown_error">Something went wrong!</string>
     <string name="current_weather">Current weather</string>
+    <string name="check_changes">Tap to check for changes</string>
+    <string name="packinglist_changed">Your packing list changed!</string>
+    <string name="reopen_explanation">Open explanation</string>
 
 </resources>
