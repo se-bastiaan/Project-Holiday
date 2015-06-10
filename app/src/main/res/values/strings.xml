@@ -29,6 +29,8 @@
     <string name="no">No</string>
     <string name="plan">Plan</string>
     <string name="date_notpossible">The selected date is not available</string>
+    <string name="location_notfound">The entered location could not be found.</string>
+    <string name="no_date">No date selected</string>
 
     <!-- NoPlanFragment -->
     <string name="no_plan">You don\'t have a planned trip.\nPress the button below to plan a new trip.</string>
