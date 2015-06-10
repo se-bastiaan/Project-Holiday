@@ -120,8 +120,10 @@ public class PackingList {
      * Adds long and short sleeved shirts
      */
     private void addTShirts() {
-        int nrOfShortSleeve = ( countDayTypes(DayType.LEVEL5) + countDayTypes(DayType.LEVEL6) + countDayTypes(DayType.LEVEL7) );
-        int nrOfLongSleeve = ( countDayTypes(DayType.LEVEL1) + countDayTypes(DayType.LEVEL2) + countDayTypes(DayType.LEVEL3) + countDayTypes(DayType.LEVEL4) );
+        int nrOfShortSleeve = ( countDayTypes(DayType.LEVEL5) + countDayTypes(DayType.LEVEL6) +
+                countDayTypes(DayType.LEVEL7) );
+        int nrOfLongSleeve = ( countDayTypes(DayType.LEVEL1) + countDayTypes(DayType.LEVEL2) +
+                countDayTypes(DayType.LEVEL3) + countDayTypes(DayType.LEVEL4) );
         if(nrOfShortSleeve!=0) {
             mClothingList.add(new Clothing("short_sleeve_shirts", nrOfShortSleeve));
         }
@@ -147,7 +149,8 @@ public class PackingList {
      */
     private void addSweaters() {
         int nrOfSweaters = (countDayTypes(DayType.LEVEL1) + countDayTypes(DayType.LEVEL2) +
-                countDayTypes(DayType.LEVEL3) + countDayTypes(DayType.LEVEL4) + countDayTypes(DayType.LEVEL5)) / 3;
+                countDayTypes(DayType.LEVEL3) + countDayTypes(DayType.LEVEL4) +
+                countDayTypes(DayType.LEVEL5)) / 3;
         if(nrOfSweaters!=0) {
             mClothingList.add(new Clothing("sweaters", nrOfSweaters));
         }
