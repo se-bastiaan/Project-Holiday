@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Project Holiday</string>
+
+
+    <!-- Licensing Information -->
+    <string name="api_license_owa">Forecast weather data is collected using the OpenWeatherMap API; http://www.openweathermap.org/.</string>
+    <string name="api_license_wu">Climate data is collected using the WeatherUnderground API; http://www.wunderground.com/</string>
+
+    <!-- Explanation Fragment -->
+    <string name="welcome">Welkom bij %s</string>
+    <string name="next">Volgende</string>
+    <string name="prev">Vorige</string>
+    <string name="proceed">Volgende</string>
+
+    <string name="explanation1">Welkom! Met deze app kun je een paklijst laten samen stellen afgestemd op jouw vakantie.</string>
+    <string name="explanation2">Je moet straks eerst invullen waar, wanneer en hoe lang je op vakantie gaat. Als je vervolgens op "plan" drukt, krijg je een paklijst.</string>
+    <string name="explanation3">Mochten er grote verandering komen in de weersvoorspellingen van jouw bestemming, dan krijg je een melding over de veranderingen in de paklijst.</string>
+    <string name="explanation4">Klik op "Verder" om de gegevens over je vakantie in te vullen.</string>
+
+
+    <!-- PlanActivity -->
+    <string name="where_going_to">Waar ga je heen?</string>
+    <string name="when_going">Wanneer vertrek je?</string>
+    <string name="how_many_night">Hoe lang ga je daar verblijven?</string>
+    <string name="dresses">Draag je jurken?</string>
+
+    <string name="loc_hint">Londen, Parijs, Nijmegen…</string>
+    <string name="date_hint">16–05–2015</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nee</string>
+    <string name="plan">Plan</string>
+    <string name="date_notpossible">Deze datum is niet mgoelijk.</string>
+    <string name="location_notfound">Deze locatie kan niet gevonden worden.</string>
+    <string name="no_date">Selecteer een datum.</string>
+
+    <!-- NoPlanFragment -->
+    <string name="no_plan">Op dit moment heb je geen geplande vakantie. \nPlan een vakantie door op de knop te drukken.</string>
+    <string name="plan_new_trip">Plan nieuwe vakantie.</string>
+
+
+</resources>

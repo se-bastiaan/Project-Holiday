@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="pants">
+        <item quantity="one">broek</item>
+        <item quantity="other">broeken</item>
+    </plurals>
+    <plurals name="shorts">
+        <item quantity="one">korte broek</item>
+        <item quantity="other">korte broeken</item>
+    </plurals>
+    <plurals name="short_sleeve_shirts">
+        <item quantity="one">korte mouwen t-shirt</item>
+        <item quantity="other">korte mouwen t-shirts</item>
+    </plurals>
+    <plurals name="long_sleeve_shirts">
+        <item quantity="one">lange mouwen shirt</item>
+        <item quantity="other">lange mouwen shirts</item>
+    </plurals>
+    <plurals name="dresses">
+        <item quantity="one">jurk</item>
+        <item quantity="other">jurken</item>
+    </plurals>
+    <plurals name="sweaters">
+        <item quantity="one">sweater</item>
+        <item quantity="other">sweaters</item>
+    </plurals>
+    <plurals name="socks">
+        <item quantity="one">paar sokken</item>
+        <item quantity="other">paren sokken</item>
+    </plurals>
+    <plurals name="underwear">
+        <item quantity="one">stuk ondergoed</item>
+        <item quantity="other">stukken ondergoed</item>
+    </plurals>
+    <plurals name="thin_pyjamas">
+        <item quantity="one">dunne pyjama</item>
+        <item quantity="other">dunne pyjamas</item>
+    </plurals>
+    <plurals name="thick_pyjamas">
+        <item quantity="one">dikke pyjama</item>item>
+        <item quantity="other">thick pyjamas</item>
+    </plurals>
+    <plurals name="swimwear">
+        <item quantity="one">set zwemkleding</item>
+        <item quantity="other">setten zwemkleding</item>
+    </plurals>
+    <plurals name="rain_coat">
+        <item quantity="one">regenjas</item>
+        <item quantity="other">regenjassen</item>
+    </plurals>
+    <plurals name="summer_coat">
+        <item quantity="one">zomerjas</item>
+        <item quantity="other">zomerjassen</item>
+    </plurals>
+    <plurals name="winter_coat">
+        <item quantity="one">winterjas</item>
+        <item quantity="other">winterjassen</item>
+    </plurals>
+    <plurals name="rubber_boots">
+        <item quantity="one">paar rubber laarzen</item>
+        <item quantity="other">paren rubber laarzen</item>
+    </plurals>
+    <plurals name="shoes">
+        <item quantity="one">paar schoenen</item>
+        <item quantity="other">paren schoenen</item>
+    </plurals>
+    <plurals name="slippers">
+        <item quantity="one">paar slippers</item>
+        <item quantity="other">paren slippers</item>
+    </plurals>
+    <plurals name="sandals">
+        <item quantity="one">paar sandalen</item>
+        <item quantity="other">paren sandalen</item>
+    </plurals>
+    <plurals name="umbrella">
+        <item quantity="one">paraplu</item>
+        <item quantity="other">paraplu\'s</item>
+    </plurals>
+    <plurals name="pet">
+        <item quantity="one">pet</item>
+        <item quantity="other">petten</item>
+    </plurals>
+    <plurals name="hood">
+        <item quantity="one">hoed</item>
+        <item quantity="other">hoeden</item>
+    </plurals>
+</resources>
