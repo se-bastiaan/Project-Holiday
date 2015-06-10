@@ -248,11 +248,11 @@ public class PackingList {
     public boolean equals(ArrayList<Clothing> clothingList) {
         int changes = 0;
         for(int i = 0; i<mClothingList.size();i++){
-            if(mClothingList.get(i)!=clothingList.get(i)){
+            if(mClothingList.get(i).equals(clothingList.get(i))){
                 changes++;
             }
         }
-        if(changes>1){
+        if(changes>2){
             return false;
         }
         return true;
