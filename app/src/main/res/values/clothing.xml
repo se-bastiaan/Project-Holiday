@@ -81,7 +81,7 @@
         <item quantity="other">pets</item>
     </plurals>
     <plurals name="hood">
-        <item quantity="one">hood</item>
-        <item quantity="other">hoods</item>
+        <item quantity="one">knitted cap</item>
+        <item quantity="other">knitted caps</item>
     </plurals>
 </resources>

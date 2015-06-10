@@ -81,7 +81,7 @@
         <item quantity="other">petten</item>
     </plurals>
     <plurals name="hood">
-        <item quantity="one">hoed</item>
-        <item quantity="other">hoeden</item>
+        <item quantity="one">muts</item>
+        <item quantity="other">mutsen</item>
     </plurals>
 </resources>
