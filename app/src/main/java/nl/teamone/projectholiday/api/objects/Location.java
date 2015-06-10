@@ -35,7 +35,7 @@ public class Location implements Parcelable {
         fullDisplayName = String.format("%s, %s", (address.getLocality() == null ? address.getSubLocality() : address.getLocality()), address.getCountryName());
         countryFull = address.getCountryName();
         countryISO = address.getCountryCode();
-        city = address.getLocality();
+        city = (address.getLocality() == null ? address.getSubLocality() : address.getLocality());
         latitude = address.getLatitude();
         longitude = address.getLongitude();
     }
