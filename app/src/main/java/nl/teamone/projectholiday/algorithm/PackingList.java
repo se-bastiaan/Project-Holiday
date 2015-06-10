@@ -245,6 +245,12 @@ public class PackingList {
         return mClothingList;
     }
 
+    public boolean equals(ArrayList<Clothing> clothingList) {
+        // Compare list for any major changes
+
+        return false;
+    }
+
     @Override
     public String toString() {
         return mClothingList.toString();

@@ -108,12 +108,13 @@ public class OpenWeatherMapApi extends DataRetriever {
         }
 
         // We got a valid response, let's populate the data:
-        for (int i = 0; i < response.cnt && i < response.list.size(); i++) {
-            Date dailyDate = new Date(from.getTime() + (i * DAY_IN_MILLIS));
-
+        Date dailyDate = new Date(from.getTime() + DAY_IN_MILLIS);;
+        for (int i = 0; i < response.cnt && i < response.list.size() && !dailyDate.after(to); i++) {
             WeatherDay day = processDay(dailyDate, location, response.list.get(i));
 
             period.addWeatherDay(day);
+
+            dailyDate = new Date(from.getTime() + ((i + 1) * DAY_IN_MILLIS));
         }
 
         period.calculateTotalDays();
