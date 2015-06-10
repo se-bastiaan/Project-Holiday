@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import nl.teamone.projectholiday.api.objects.WeatherDay;
 import nl.teamone.projectholiday.api.objects.WeatherPeriod;
+import retrofit.http.Path;
 
 public class PackingList {
     private ArrayList<Day> mHoliday;
@@ -246,16 +247,44 @@ public class PackingList {
     }
 
     public boolean equals(ArrayList<Clothing> clothingList) {
-        int changes = 0;
-        for(int i = 0; i<mClothingList.size();i++){
-            if(mClothingList.get(i).equals(clothingList.get(i))){
-                changes++;
+        int allowedChanges = 2;
+        int changes = getDifference(this.getClothingList(), clothingList);
+        if (changes > allowedChanges)
+            return false;
+        return true;
+    }
+
+    public static int getDifference(ArrayList<Clothing> firstList, ArrayList<Clothing> secondList) {
+        int difference = 0;
+
+        for (Clothing c : firstList) {
+            Clothing other = findClothing(c, secondList);
+            if (other == null) {
+                difference += c.getQuantity();
+            } else {
+                difference += Math.abs(c.getQuantity() - other.getQuantity());
             }
         }
-        if(changes>2){
-            return false;
+
+        for (Clothing c : secondList) {
+            Clothing other = findClothing(c, firstList);
+            if (other == null) {
+                difference += c.getQuantity();
+            } else {
+                // Already handled in the first for loop, don't need to do it again.
+            }
         }
-        return true;
+
+        return difference;
+    }
+
+    public static Clothing findClothing(Clothing searchFor, ArrayList<Clothing> list) {
+        for (Clothing c : list) {
+            if (c.getId().equalsIgnoreCase(searchFor.getId())) {
+                return c;
+            }
+        }
+        return null;
     }
 
     @Override

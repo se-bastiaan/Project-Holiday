@@ -13,7 +13,6 @@ import retrofit.RestAdapter;
 import rx.Observable;
 import rx.functions.Action1;
 import rx.functions.Func1;
-import timber.log.Timber;
 
 public class OpenWeatherMapApi extends DataRetriever {
 
