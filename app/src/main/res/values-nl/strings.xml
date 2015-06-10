@@ -15,9 +15,9 @@
     <string name="proceed">Volgende</string>
 
     <string name="explanation1">Welkom! Met deze app kun je een paklijst laten samen stellen afgestemd op jouw vakantie.</string>
-    <string name="explanation2">Je moet straks eerst invullen waar, wanneer en hoe lang je op vakantie gaat. Als je vervolgens op "plan" drukt, krijg je een paklijst.</string>
+    <string name="explanation2">Je mag dadelijk invullen waar, wanneer en hoe lang je op vakantie gaat. Als je vervolgens op "plan" drukt, krijg je een paklijst.</string>
     <string name="explanation3">Mochten er grote verandering komen in de weersvoorspellingen van jouw bestemming, dan krijg je een melding over de veranderingen in de paklijst.</string>
-    <string name="explanation4">Klik op "Verder" om de gegevens over je vakantie in te vullen.</string>
+    <string name="explanation4">Klik op "Volgende" om de gegevens over je vakantie in te vullen.</string>
 
 
     <!-- PlanActivity -->
@@ -31,7 +31,7 @@
     <string name="yes">Ja</string>
     <string name="no">Nee</string>
     <string name="plan">Plan</string>
-    <string name="date_notpossible">Deze datum is niet mgoelijk.</string>
+    <string name="date_notpossible">Deze datum is niet mogelijk.</string>
     <string name="location_notfound">Deze locatie kan niet gevonden worden.</string>
     <string name="no_date">Selecteer een datum.</string>
 
