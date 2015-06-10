@@ -1,8 +1,5 @@
 package nl.teamone.projectholiday.ui.fragments;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -53,6 +50,11 @@ public class PlanFragment extends Fragment {
     @InjectView(R.id.swipe_container)
     SwipeRefreshLayout mSwipeRefreshLayout;
 
+    /**
+     * Get new instance of PlanFragment
+     * @param planData {@link PlanData}
+     * @return {@link PlanFragment}
+     */
     public static PlanFragment getInstance(PlanData planData) {
         PlanFragment fragment = new PlanFragment();
         Bundle args = new Bundle();
@@ -62,30 +64,45 @@ public class PlanFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * Lifecycle call
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPlanData = getArguments().getParcelable(PLAN_DATA);
     }
 
+    /**
+     * Lifecycle call
+     */
     @Override
     public void onResume() {
         super.onResume();
         AlarmReceiver.cancel(getActivity());
     }
 
+    /**
+     * Lifecycle call
+     */
     @Override
     public void onPause() {
         super.onPause();
         AlarmReceiver.planNew(getActivity());
     }
 
+    /**
+     * Lifecycle call
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_plan, container, false);
     }
 
+    /**
+     * Lifecycle call
+     */
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -104,12 +121,20 @@ public class PlanFragment extends Fragment {
         mRecyclerView.setLayoutManager(layoutManager);
     }
 
+    /**
+     * Inflate menu
+     */
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.fragment_plan, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
+    /**
+     * OnClick of menu items
+     * @param item {@link MenuItem}
+     * @return {@link Boolean}
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -128,6 +153,9 @@ public class PlanFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Listener for the pull-to-refresh
+     */
     private SwipeRefreshLayout.OnRefreshListener mOnRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
         @Override
         public void onRefresh() {
@@ -164,6 +192,9 @@ public class PlanFragment extends Fragment {
         }
     };
 
+    /**
+     * Span lookup for the grid
+     */
     private GridLayoutManager.SpanSizeLookup mSpanSizeLookup = new GridLayoutManager.SpanSizeLookup() {
         @Override
         public int getSpanSize(int position) {

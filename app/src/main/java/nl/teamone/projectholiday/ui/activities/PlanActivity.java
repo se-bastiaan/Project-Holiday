@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ToggleButton;
 
@@ -21,11 +22,15 @@ import butterknife.OnClick;
 import nl.teamone.projectholiday.R;
 import nl.teamone.projectholiday.api.objects.Location;
 import nl.teamone.projectholiday.api.objects.PlanData;
+import nl.teamone.projectholiday.ui.adapters.PlacesAutoCompleteAdapter;
 import nl.teamone.projectholiday.ui.fragments.DatePickerFragment;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
+/**
+ * Activity to plan a new trip
+ */
 public class PlanActivity extends BaseActivity {
 
     public static final int DATA = 1408;
@@ -35,7 +40,7 @@ public class PlanActivity extends BaseActivity {
     private Boolean mDresses;
 
     @InjectView(R.id.location_input)
-    EditText mLocationEditText;
+    AutoCompleteTextView mLocationEditText;
     @InjectView(R.id.date_input)
     EditText mDateEditText;
     @InjectView(R.id.progress_seekbar)
@@ -69,6 +74,8 @@ public class PlanActivity extends BaseActivity {
         mSeekBar.requestFocus();
 
         getSupportActionBar().setTitle(R.string.plan_new_trip);
+
+        mLocationEditText.setAdapter(new PlacesAutoCompleteAdapter(this, R.layout.autocomplete_list_item));
     }
 
     @OnClick(R.id.plan_button)

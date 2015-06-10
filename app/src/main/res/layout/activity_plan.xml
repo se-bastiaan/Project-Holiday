@@ -32,7 +32,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/where_going_to"
                     style="@style/Base.TextAppearance.AppCompat.Subhead" />
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/location_input"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

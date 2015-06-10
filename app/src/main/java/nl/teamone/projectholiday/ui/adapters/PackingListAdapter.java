@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +18,9 @@ import nl.teamone.projectholiday.algorithm.Clothing;
 import nl.teamone.projectholiday.api.objects.WeatherData;
 import nl.teamone.projectholiday.utils.PixelUtils;
 
+/**
+ * Custom adapter for the packing list
+ */
 public class PackingListAdapter extends HeaderRecyclerViewAdapter {
 
     private WeatherData mWeather;
@@ -82,6 +84,9 @@ public class PackingListAdapter extends HeaderRecyclerViewAdapter {
         return position;
     }
 
+    /**
+     * ViewHolder for header item
+     */
     public class HeaderViewHolder extends RecyclerView.ViewHolder {
 
         @InjectView(R.id.image)
@@ -98,6 +103,9 @@ public class PackingListAdapter extends HeaderRecyclerViewAdapter {
 
     }
 
+    /**
+     * ViewHolder for normal items
+     */
     public class ItemViewHolder extends RecyclerView.ViewHolder {
 
         View itemView;
@@ -113,9 +121,6 @@ public class PackingListAdapter extends HeaderRecyclerViewAdapter {
         }
 
     }
-
-
-
 
     /* Unused below */
     @Override

@@ -3,6 +3,9 @@ package nl.teamone.projectholiday.ui.adapters;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+/**
+ * RecyclerViewAdapter with support for headers and footers
+ */
 public abstract class HeaderRecyclerViewAdapter extends RecyclerView.Adapter {
     private static final int TYPE_HEADER = Integer.MIN_VALUE;
     private static final int TYPE_FOOTER = Integer.MIN_VALUE + 1;

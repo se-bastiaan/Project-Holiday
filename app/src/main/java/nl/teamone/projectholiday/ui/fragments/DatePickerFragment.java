@@ -12,6 +12,9 @@ import java.util.Locale;
 
 import nl.teamone.projectholiday.R;
 
+/**
+ * Standard DatePickerFragment to select a date
+ */
 public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
     private Callback mCallback;
