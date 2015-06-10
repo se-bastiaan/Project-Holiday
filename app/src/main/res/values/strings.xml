@@ -13,10 +13,10 @@
     <string name="proceed">Proceed</string>
 
 
-    <string name="explanation1">Welcome! This app will help you make a packing list designed specially for your holiday.</string>
-    <string name="explanation2">You will have to fill in a form about where you will be headed, when you will go there and How long you will be going on vacation.
-                                After you press the "plan" button, you will see your own personalised packing list.</string>
-    <string name="explanation3">If there are major weather changes at your destination, you will be notified about the changes in your packing list.</string>
+    <string name="explanation1">Welcome! This app will help you make a packing list designed specifically for your holiday.</string>
+    <string name="explanation2">You will have to fill in a form about where you will be headed, \n when you will go there and how long you will be going on vacation.
+                               \n After you press the "plan" button, \n you will see your own personalised packing list.</string>
+    <string name="explanation3">If there are major weather changes at your destination, \n you will be notified about the changes in your packing list.</string>
     <string name="explanation4">Press proceed to start and enter the details about your trip! </string>
 
 
@@ -36,7 +36,7 @@
     <string name="no_date">No date selected</string>
 
     <!-- NoPlanFragment -->
-    <string name="no_plan">You don\'t have a planned trip.\nPress the button below to plan a new trip.</string>
+    <string name="no_plan">You don\'t have a planned trip.\n Press the button below to plan a new trip.</string>
     <string name="plan_new_trip">Plan new trip</string>
 
     <!-- PlanFragment -->
