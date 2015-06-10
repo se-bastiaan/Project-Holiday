@@ -110,8 +110,8 @@ public class PackingList {
      * Adds pants+shorts
      */
     private void addPants() {
-        int nrOfPants = (countDayTypes(DayType.LEVEL1) + countDayTypes(DayType.LEVEL2) + countDayTypes(DayType.LEVEL3) + countDayTypes(DayType.LEVEL4) + countDayTypes(DayType.LEVEL5)) / 3;
-        int nrOfShorts = (countDayTypes(DayType.LEVEL6) + countDayTypes(DayType.LEVEL7)) / 3;
+        int nrOfPants =( (countDayTypes(DayType.LEVEL1) + countDayTypes(DayType.LEVEL2) + countDayTypes(DayType.LEVEL3) + countDayTypes(DayType.LEVEL4) + countDayTypes(DayType.LEVEL5)) / 3)+1;
+        int nrOfShorts =( (countDayTypes(DayType.LEVEL6) + countDayTypes(DayType.LEVEL7)) / 3)+1;
         mClothingList.add(new Clothing("pants", nrOfPants));
         mClothingList.add(new Clothing("shorts", nrOfShorts));
     }
@@ -139,7 +139,7 @@ public class PackingList {
      * Adds sweaters
      */
     private void addSweaters() {
-        int nrOfSweaters = (countDayTypes(DayType.LEVEL1) + countDayTypes(DayType.LEVEL2) + countDayTypes(DayType.LEVEL3) + countDayTypes(DayType.LEVEL4) + countDayTypes(DayType.LEVEL5)) / 3;
+        int nrOfSweaters =( (countDayTypes(DayType.LEVEL1) + countDayTypes(DayType.LEVEL2) + countDayTypes(DayType.LEVEL3) + countDayTypes(DayType.LEVEL4) + countDayTypes(DayType.LEVEL5)) / 3)+1;
         mClothingList.add(new Clothing("sweaters", nrOfSweaters));
     }
 
@@ -151,9 +151,9 @@ public class PackingList {
         mClothingList.add(new Clothing("socks", nrOfSocks));
         int nrOfUnderwear = getTotalDays();
         mClothingList.add(new Clothing("underwear", nrOfUnderwear));
-        int nrOfThinPJs = countNightTypes(NightType.LEVEL2) / 3;
+        int nrOfThinPJs =( countNightTypes(NightType.LEVEL2) / 3)+1;
         mClothingList.add(new Clothing("thin_pyjamas", nrOfThinPJs));
-        int nrOfThickPJs = countNightTypes(NightType.LEVEL1) / 3;
+        int nrOfThickPJs =( countNightTypes(NightType.LEVEL1) / 3)+1;
         mClothingList.add(new Clothing("thick_pyjamas", nrOfThickPJs));
     }
 
