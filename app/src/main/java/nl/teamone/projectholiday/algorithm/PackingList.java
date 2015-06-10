@@ -11,6 +11,7 @@ public class PackingList {
     private ArrayList<Day> mHoliday;
     private ArrayList<Clothing> mClothingList;
     private boolean mDresses;
+    private final int allowedChanges = 2;
 
     /**
      * Constructor which makes an array list with days
@@ -246,14 +247,24 @@ public class PackingList {
         return mClothingList;
     }
 
+    /**
+     * Checks whether this.clothingList is equal to another clothinglist.
+     * @param clothingList The clothinglist to check differences against.
+     * @return true if the number of changes <= allowedChanges, false otherwise.
+     */
     public boolean equals(ArrayList<Clothing> clothingList) {
-        int allowedChanges = 2;
         int changes = getDifference(this.getClothingList(), clothingList);
         if (changes > allowedChanges)
             return false;
         return true;
     }
 
+    /**
+     * Gets the amount of clothing that differs between two packing lists.
+     * @param firstList The first list of clothing.
+     * @param secondList The second list of clothing.
+     * @return The amount of clothes that differ. >=0; 0 means the lists are identical.
+     */
     public static int getDifference(ArrayList<Clothing> firstList, ArrayList<Clothing> secondList) {
         int difference = 0;
 
