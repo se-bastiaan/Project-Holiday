@@ -45,10 +45,10 @@ public class ExplanationActivity extends BaseActivity {
          * Then set it on {@link ViewPager} and set the {@link ViewPager} on the {@link UnderlinePageIndicator}
          */
         Fragment[] fragments = new Fragment[]{
-                ExplanationFragment.getInstance(R.drawable.tempimage, R.string.explanation1),
-                ExplanationFragment.getInstance(R.drawable.tempimage, R.string.explanation2),
-                ExplanationFragment.getInstance(R.drawable.tempimage, R.string.explanation3),
-                ExplanationFragment.getInstance(R.drawable.tempimage, R.string.explanation4, R.string.proceed)
+                ExplanationFragment.getInstance(R.drawable.explanation1, R.string.explanation1),
+                ExplanationFragment.getInstance(R.drawable.explanation2, R.string.explanation2),
+                ExplanationFragment.getInstance(R.drawable.explanation3, R.string.explanation3),
+                ExplanationFragment.getInstance(R.drawable.explanation4, R.string.explanation4, R.string.proceed)
         };
         PagerAdapter adapter = new ExplanationFragmentAdapter(getSupportFragmentManager(), fragments);
         mViewPager.setAdapter(adapter);
