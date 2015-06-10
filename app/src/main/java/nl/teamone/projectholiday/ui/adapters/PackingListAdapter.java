@@ -65,7 +65,7 @@ public class PackingListAdapter extends HeaderRecyclerViewAdapter {
         itemViewHolder.nameText.setText(name);
         itemViewHolder.quantityText.setText(Integer.toString(clothing.getQuantity()));
 
-        if(position == getBasicItemCount() - 1) {
+        if (position == getBasicItemCount() - 1|| (position == getBasicItemCount() - 2 && getBasicItemCount() % 2 == 0)) {
             GridLayoutManager.LayoutParams layoutParams = (GridLayoutManager.LayoutParams) itemViewHolder.itemView.getLayoutParams();
             layoutParams.bottomMargin = PixelUtils.getPixelsFromDp(itemViewHolder.itemView.getContext(), 16);
             itemViewHolder.itemView.setLayoutParams(layoutParams);
@@ -81,7 +81,6 @@ public class PackingListAdapter extends HeaderRecyclerViewAdapter {
     public int getBasicItemType(int position) {
         return position;
     }
-
 
     public class HeaderViewHolder extends RecyclerView.ViewHolder {
 
@@ -118,12 +117,7 @@ public class PackingListAdapter extends HeaderRecyclerViewAdapter {
 
 
 
-
-
-
     /* Unused below */
-
-
     @Override
     public boolean useFooter() {
         return false;

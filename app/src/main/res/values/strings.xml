@@ -13,11 +13,10 @@
     <string name="proceed">Proceed</string>
 
 
-    <string name="explanation1">Welcome! This app will help you make a packing list designed specially for your holiday.</string>
-    <string name="explanation2">You will have to fill in a form about where you will be headed, when you will go there and How long you will be going on vacation.
-                                After you press the "plan" button, you will see your own personalised packing list.</string>
-    <string name="explanation3">If there are major weather changes at your destination, you will be notified about the changes in your packing list.</string>
-    <string name="explanation4">Press proceed to start and enter the details about your trip! </string>
+    <string name="explanation1">Welcome! This app will help you packing your stuff when you  your holiday.</string>
+    <string name="explanation2">Tell us where you are going to, when you are leaving and how long you will stay. The app will then calculate what you should bring.</string>
+    <string name="explanation3">Are there any major weather changes? Then you will be notified so that you can check your packing list for any changes.</string>
+    <string name="explanation4">Ready? Press the button to plan your first trip!</string>
 
 
     <!-- PlanActivity -->
