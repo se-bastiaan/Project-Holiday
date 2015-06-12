@@ -59,11 +59,10 @@ public class MainActivity extends BaseActivity {
             return;
         }
 
-        if(getIntent().hasExtra(REDIRECT_TO_PLAN)) {
+        mPlanData = PlanData.getFromPrefs(this);
+        if(getIntent().hasExtra(REDIRECT_TO_PLAN) && mPlanData == null) {
             PlanActivity.startActivityForResult(this);
-        }
-
-        if((mPlanData = PlanData.getFromPrefs(this)) == null) {
+        } else if(mPlanData == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, NoPlanFragment.getInstance()).commit();
         } else {
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, PlanFragment.getInstance(mPlanData)).commit();
