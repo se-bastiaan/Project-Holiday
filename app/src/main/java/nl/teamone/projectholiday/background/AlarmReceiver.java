@@ -18,6 +18,7 @@ import nl.teamone.projectholiday.api.API;
 import nl.teamone.projectholiday.api.objects.PlanData;
 import nl.teamone.projectholiday.api.objects.WeatherPeriod;
 import nl.teamone.projectholiday.ui.activities.MainActivity;
+import nl.teamone.projectholiday.utils.NetworkUtils;
 import nl.teamone.projectholiday.utils.PrefUtils;
 import rx.functions.Action1;
 
@@ -30,29 +31,33 @@ public class AlarmReceiver extends BroadcastReceiver {
      */
     @Override
     public void onReceive(final Context context, Intent intent) {
-        final PlanData planData = PlanData.getFromPrefs(context);
-        API.getWeatherData(planData.location, planData.departureDate, planData.getReturnDate())
-                .subscribe(new Action1<WeatherPeriod>() {
-                    @Override
-                    public void call(WeatherPeriod period) {
-                        PackingList packingList = new PackingList(period, planData.enableDresses);
-                        if (packingList.equals(PackingList.getFromPrefs(context))) {
-                            Intent resultIntent = new Intent(context, MainActivity.class);
-                            PendingIntent resultPendingIntent = PendingIntent.getActivity(context, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-                            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
-                                    .setContentIntent(resultPendingIntent)
-                                    .setSmallIcon(R.drawable.ic_stat_no)
-                                    .setContentTitle(context.getString(R.string.packinglist_changed))
-                                    .setContentText(context.getString(R.string.check_changes));
+        if(NetworkUtils.isNetworkConnected()) {
+            final PlanData planData = PlanData.getFromPrefs(context);
+            API.getWeatherData(planData.location, planData.departureDate, planData.getReturnDate())
+                    .doOnNext(new Action1<WeatherPeriod>() {
+                        @Override
+                        public void call(WeatherPeriod period) {
+                            PackingList packingList = new PackingList(period, planData.enableDresses);
+                            if (packingList.equals(PackingList.getFromPrefs(context))) {
+                                Intent resultIntent = new Intent(context, MainActivity.class);
+                                PendingIntent resultPendingIntent = PendingIntent.getActivity(context, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                                NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
+                                        .setContentIntent(resultPendingIntent)
+                                        .setSmallIcon(R.drawable.ic_stat_no)
+                                        .setContentTitle(context.getString(R.string.packinglist_changed))
+                                        .setContentText(context.getString(R.string.check_changes));
 
-                            AlarmReceiver.planNew(context);
+                                planNew(context);
 
-                            NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-                            notificationManager.notify(1605, notificationBuilder.build());
-                            packingList.saveToPrefs(context);
+                                NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+                                notificationManager.notify(1605, notificationBuilder.build());
+                                packingList.saveToPrefs(context);
+                            }
                         }
-                    }
-                });
+                    }).subscribe();
+        } else {
+            planNew(context);
+        }
     }
 
     /**

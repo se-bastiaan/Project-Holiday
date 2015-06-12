@@ -44,5 +44,6 @@
     <string name="check_changes">Klik om de veranderingen te bekijken</string>
     <string name="packinglist_changed">Je paklijst is aangepast!</string>
     <string name="reopen_explanation">Open uitleg</string>
+    <string name="no_connection">Er is geen werkende internetverbinding gevonden. Wil je je Wi-Fi verbinding controleren?</string>
 
 </resources>

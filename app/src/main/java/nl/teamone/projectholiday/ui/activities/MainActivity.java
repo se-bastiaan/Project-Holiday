@@ -1,13 +1,18 @@
 package nl.teamone.projectholiday.ui.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.v7.app.AlertDialog;
+import android.widget.Toast;
 
 import nl.teamone.projectholiday.Preferences;
 import nl.teamone.projectholiday.R;
 import nl.teamone.projectholiday.api.objects.PlanData;
 import nl.teamone.projectholiday.ui.fragments.NoPlanFragment;
 import nl.teamone.projectholiday.ui.fragments.PlanFragment;
+import nl.teamone.projectholiday.utils.NetworkUtils;
 import nl.teamone.projectholiday.utils.PrefUtils;
 
 /**
@@ -26,6 +31,26 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_main);
+
+        if(!NetworkUtils.isNetworkConnected()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage(getResources().getString(R.string.no_connection))
+                    .setCancelable(false)
+                    .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.dismiss();
+                            MainActivity.this.finish();
+                        }
+                    }).setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.dismiss();
+                    startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                }
+            });
+            AlertDialog alert = builder.create();
+            alert.show();
+            return;
+        }
 
         if(!PrefUtils.get(this, Preferences.EXPLANATION_GIVEN, false)) {
             Intent intent = new Intent(this, ExplanationActivity.class);

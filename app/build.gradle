@@ -12,8 +12,19 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    signingConfigs {
+        mainConfig {
+            keyAlias 'projectholiday'
+            keyPassword 'BadEendje123'
+            storeFile file('../../Keystore/keystore.jks')
+            storePassword 'BadEendje123'
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.mainConfig
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

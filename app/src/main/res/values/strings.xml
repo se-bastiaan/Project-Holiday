@@ -47,5 +47,6 @@
     <string name="check_changes">Tap to check for changes</string>
     <string name="packinglist_changed">Your packing list changed!</string>
     <string name="reopen_explanation">Open explanation</string>
+    <string name="no_connection">We could not find a working network connection. Do you want to check your Wi-Fi connection?</string>
 
 </resources>
