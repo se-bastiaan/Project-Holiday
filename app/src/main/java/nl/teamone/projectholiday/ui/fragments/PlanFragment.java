@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -36,6 +37,7 @@ import nl.teamone.projectholiday.ui.adapters.PackingListAdapter;
 import nl.teamone.projectholiday.utils.PrefUtils;
 import rx.Observable;
 import rx.android.app.AppObservable;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func2;
 
@@ -113,8 +115,13 @@ public class PlanFragment extends Fragment {
         mSwipeRefreshLayout.setColorSchemeResources(R.color.accent, R.color.primary, R.color.primary_dark);
         mSwipeRefreshLayout.setOnRefreshListener(mOnRefreshListener);
 
-        mSwipeRefreshLayout.setRefreshing(true);
         mOnRefreshListener.onRefresh();
+        Observable.just(null).delay(1000, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<Object>() {
+            @Override
+            public void call(Object o) {
+                mSwipeRefreshLayout.setRefreshing(true);
+            }
+        });
 
         GridLayoutManager layoutManager = new GridLayoutManager(mRecyclerView.getContext(), 2);
         layoutManager.setSpanSizeLookup(mSpanSizeLookup);

@@ -10,12 +10,15 @@ import nl.teamone.projectholiday.api.objects.WeatherPeriod;
 import nl.teamone.projectholiday.api.responses.weatherunderground.ApiResponse;
 import nl.teamone.projectholiday.api.services.WeatherUnderGroundService;
 import retrofit.RestAdapter;
+import retrofit.RetrofitError;
 import rx.Observable;
 import rx.functions.Func1;
+import timber.log.Timber;
 
 public class WeatherUnderGroundApi extends DataRetriever {
 
     public static final String baseURL = "http://api.wunderground.com";
+    protected static String loc = null;
 
     /**
      * Gets WeatherData from location from date from to date to
@@ -29,7 +32,7 @@ public class WeatherUnderGroundApi extends DataRetriever {
                 .setEndpoint(baseURL)
                 .build();
 
-        WeatherUnderGroundService apiRetriever = restAdapter.create(WeatherUnderGroundService.class);
+        final WeatherUnderGroundService apiRetriever = restAdapter.create(WeatherUnderGroundService.class);
 
         return apiRetriever.getClimateData(
                 createDateString(from),
@@ -38,8 +41,17 @@ public class WeatherUnderGroundApi extends DataRetriever {
                 loc.city)
                 .map(new Func1<ApiResponse, WeatherPeriod>() {
                     @Override
-                    public WeatherPeriod call(ApiResponse response) {
-                        return processResponse(response, from, to, loc);
+                    public WeatherPeriod call(ApiResponse apiResponse) {
+                        if(apiResponse.response.results != null) {
+                            String locStr = apiResponse.response.results.get(0).l.replace("/q/", "");
+                            try {
+                                apiResponse = apiRetriever.getClimateData(createDateString(from), createDateString(to), locStr);
+                            } catch (RetrofitError e) {
+                                Timber.e(e, e.getMessage());
+                            }
+                        }
+
+                        return processResponse(apiResponse, from, to, loc);
                     }
                 });
     }

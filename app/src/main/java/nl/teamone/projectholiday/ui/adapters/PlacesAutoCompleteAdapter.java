@@ -10,6 +10,8 @@ import java.util.List;
 
 import nl.teamone.projectholiday.api.PlacesApi;
 import nl.teamone.projectholiday.api.responses.places.Prediction;
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func1;
 
@@ -36,7 +38,7 @@ public class PlacesAutoCompleteAdapter extends ArrayAdapter<String> implements F
         Filter filter = new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
-                FilterResults filterResults = new Filter.FilterResults();
+                final FilterResults filterResults = new Filter.FilterResults();
                 if (constraint != null) {
                     PlacesApi.getPredictions(constraint.toString()).map(new Func1<List<Prediction>, List<String>>() {
                         @Override
@@ -57,9 +59,15 @@ public class PlacesAutoCompleteAdapter extends ArrayAdapter<String> implements F
                     });
                 }
 
-                filterResults.values = mResultList = new ArrayList<>();
-                filterResults.count = mResultList.size();
-                notifyDataSetChanged();
+                // Hacky observable to run in ui thread
+                Observable.just(null).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<Object>() {
+                    @Override
+                    public void call(Object o) {
+                        filterResults.values = mResultList = new ArrayList<>();
+                        filterResults.count = mResultList.size();
+                        notifyDataSetChanged();
+                    }
+                });
  
                 return filterResults;
             }
